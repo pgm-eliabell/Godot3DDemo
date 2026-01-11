@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
 @onready var camera_mount: Node3D = $Camera_Mount
-@onready var animation_player: AnimationPlayer = $Visuals/mixamo_base/AnimationPlayer
+@onready var animation_player: AnimationPlayer = $Visuals/Knight/AnimationPlayer
+
 @onready var visuals: Node3D = $Visuals
 
 
@@ -14,7 +15,7 @@ var running = false
 var walking_speed = 3
 var running_speed = 6
 
-var is_locked = false
+var is_attacking = false
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -27,12 +28,12 @@ func _input(event):
 
 func _physics_process(delta: float) -> void:
 	if !animation_player.is_playing():
-		is_locked = false
+		is_attacking = false
 	
 	if Input.is_action_just_pressed("attack"):
-		if animation_player.current_animation != "kick":
-			animation_player.play("kick")
-			is_locked = true
+		if animation_player.current_animation != "1H_Melee_Attack_Slice_Horizontal":
+			animation_player.play("1H_Melee_Attack_Slice_Horizontal")
+			is_attacking = true
 			
 	if Input.is_action_pressed("shift"):
 		SPEED = running_speed
@@ -53,13 +54,13 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		if !is_locked: 
+		if !is_attacking: 
 			if running: 
-				if animation_player.current_animation != "running":
-					animation_player.play("running")
+				if animation_player.current_animation != "Running_B":
+					animation_player.play("Running_B")
 			else:
-				if animation_player.current_animation != "walking":
-					animation_player.play("walking")
+				if animation_player.current_animation != "Walking_A":
+					animation_player.play("Walking_A")
 					
 				
 			visuals.look_at(position + direction)
@@ -68,12 +69,12 @@ func _physics_process(delta: float) -> void:
 		velocity.z = direction.z * SPEED
 		
 	else:
-		if !is_locked:
-			if animation_player.current_animation != "idle":
-				animation_player.play("idle")
+		if !is_attacking:
+			if animation_player.current_animation != "Idle":
+				animation_player.play("Idle")
 					
 				velocity.x = move_toward(velocity.x, 0, SPEED)
 				velocity.z = move_toward(velocity.z, 0, SPEED)
 		
-	if !is_locked:
+	if !is_attacking:
 		move_and_slide()
