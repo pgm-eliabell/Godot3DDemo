@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ocnvsdljncs3"
-path.s3tc="res://.godot/imported/rogue_texture.png-6c646db9aaa6c4a7be3f63de8fcf7d1b.s3tc.ctex"
+uid="uid://dainfguywwln3"
+path.s3tc="res://.godot/imported/skeleton_mage_skeleton_texture.png-ac604da85b265bcadce7036a9aefe0ca.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "661544b1e8ba10b5a0c98b638eae6d0b"
+}
 
 [deps]
 
-source_file="res://assets/kaykit_character_pack_adventures/Textures/rogue_texture.png"
-dest_files=["res://.godot/imported/rogue_texture.png-6c646db9aaa6c4a7be3f63de8fcf7d1b.s3tc.ctex"]
+source_file="res://assets/brackeys_3d_game_assets/skeleton/skeleton_mage_skeleton_texture.png"
+dest_files=["res://.godot/imported/skeleton_mage_skeleton_texture.png-ac604da85b265bcadce7036a9aefe0ca.s3tc.ctex"]
 
 [params]
 

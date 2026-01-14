@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://de7lasq2yhqji"]
+[gd_scene load_steps=14 format=3 uid="uid://de7lasq2yhqji"]
 
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assets/third_person_controller_assets-main/textures/grids/Dark/texture_05.png" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://ddoecru21qaoc" path="res://scenes/Player.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://byir3quk8wn" path="res://scenes/chest.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://cf5ll7yyiwv36" path="res://scenes/barrel.tscn" id="4_jyhfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -139,3 +141,12 @@ size = Vector3(2, 2, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_0wfyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, 24)
+
+[node name="Chest" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, 18)
+
+[node name="Chest2" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, 18)
+
+[node name="barrel" parent="." instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 18)

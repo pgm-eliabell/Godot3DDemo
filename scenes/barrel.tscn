@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf5ll7yyiwv36"]
+
+[ext_resource type="PackedScene" uid="uid://b5cagujkgyl47" path="res://assets/brackeys_3d_game_assets/import_examples/barrel/barrel.glb" id="1_q36op"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q36op"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q36op"]
+height = 1.95
+radius = 0.90000004
+
+[node name="barrel" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_q36op")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.975, 0)
+shape = SubResource("CylinderShape3D_q36op")
+
+[node name="barrel" parent="." instance=ExtResource("1_q36op")]

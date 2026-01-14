@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ocnvsdljncs3"
-path.s3tc="res://.godot/imported/rogue_texture.png-6c646db9aaa6c4a7be3f63de8fcf7d1b.s3tc.ctex"
+uid="uid://d0siggj41sqvp"
+path.s3tc="res://.godot/imported/barrel_texture.png-1f7fee717288e4aa3f59bdf67b8ce6a0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "33c924802a36c4f3415e10bb6940e832"
+}
 
 [deps]
 
-source_file="res://assets/kaykit_character_pack_adventures/Textures/rogue_texture.png"
-dest_files=["res://.godot/imported/rogue_texture.png-6c646db9aaa6c4a7be3f63de8fcf7d1b.s3tc.ctex"]
+source_file="res://assets/brackeys_3d_game_assets/import_examples/barrel/barrel_texture.png"
+dest_files=["res://.godot/imported/barrel_texture.png-1f7fee717288e4aa3f59bdf67b8ce6a0.s3tc.ctex"]
 
 [params]
 
