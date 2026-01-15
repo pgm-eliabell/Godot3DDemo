@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://w3gbbh4h2ehg" path="res://assets/brackeys_3d_game_assets/dungeon_assets/building/floor_wood.glb" id="1_1x1mj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2l1kl"]
-size = Vector3(4, 0.14999999, 4)
+size = Vector3(4, 4, 1)
 
 [node name="Ceiling_StaticBody3D" type="StaticBody3D"]
 

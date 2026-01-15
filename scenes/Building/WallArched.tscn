@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bujwaujlafqe6"]
+
+[ext_resource type="PackedScene" uid="uid://b1a0dpw1of7ym" path="res://assets/brackeys_3d_game_assets/dungeon_assets/building/wall_arched.glb" id="1_5o4nc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vasxs"]
+points = PackedVector3Array(2, 4, 0.5, 2, 0, 0.5, 2, 4, -0.5, -2, 4, 0.5, 2, 0, -0.5, -2, 0, 0.5, -2, 4, -0.5, -2, 0, -0.5)
+
+[node name="ArcedWall" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_vasxs")
+
+[node name="wall_arched2" parent="." instance=ExtResource("1_5o4nc")]
