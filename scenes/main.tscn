@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://de7lasq2yhqji"]
+[gd_scene load_steps=31 format=3 uid="uid://de7lasq2yhqji"]
 
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assets/third_person_controller_assets-main/textures/grids/Dark/texture_05.png" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://ddoecru21qaoc" path="res://scenes/Player.tscn" id="2_0wfyh"]
@@ -17,8 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://bqoa5urq16io6" path="res://scenes/Building/Ceiling.tscn" id="12_dp3eg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_top_color = Color(0.03137255, 0.06666667, 0.21960784, 1)
+sky_horizon_color = Color(0.8, 0.57254905, 0.5568628, 1)
+sky_curve = 0.048711013
+ground_horizon_color = Color(0.23615652, 0.24147317, 0.2521182, 1)
 
 [sub_resource type="Sky" id="Sky_ig7tw"]
 sky_material = SubResource("ProceduralSkyMaterial_7dm0k")
@@ -51,6 +53,26 @@ uv1_triplanar = true
 albedo_color = Color(0.92318773, 0.52756745, 0.4565131, 1)
 uv1_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkv2x"]
+metallic = 1.0
+metallic_specular = 0.51
+
+[sub_resource type="SphereMesh" id="SphereMesh_jbj1t"]
+material = SubResource("StandardMaterial3D_jkv2x")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muem4"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dp3eg"]
+material = SubResource("StandardMaterial3D_muem4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ld40"]
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_gqmmt"]
+material = SubResource("StandardMaterial3D_0ld40")
+
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -58,6 +80,10 @@ environment = SubResource("Environment_0xm2m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.104528494, -0.53435624, 0.8387712, 5.896905e-10, 0.8433914, 0.53729963, -0.99452186, 0.05616312, -0.088158436, 0, 0, 0)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 16.0
+light_indirect_energy = 1.99
+light_negative = true
 shadow_enabled = true
 
 [node name="Map" type="CSGBox3D" parent="."]
@@ -457,7 +483,7 @@ material_override = SubResource("StandardMaterial3D_sugp2")
 size = Vector3(2, 2, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_0wfyh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 0.5, -59)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 112, 0.5, -55)
 
 [node name="CSGCombiner3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0.39999998, 36)
@@ -493,3 +519,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.6, -4)
 
 [node name="barrel" parent="CSGCombiner3D" instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1.6, -4)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111, 2.1000001, -48)
+mesh = SubResource("SphereMesh_jbj1t")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111, 0.79999995, -48)
+mesh = SubResource("SphereMesh_dp3eg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.038124, 3.3, -48)
+mesh = SubResource("SphereMesh_gqmmt")
