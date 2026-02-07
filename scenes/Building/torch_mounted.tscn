@@ -208,7 +208,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45191705, -0.2999954)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="OmniLight3D/FireAnimationPivotPoint"]
 transform = Transform3D(2.3304, 0, 0, 0, 1.9551, 0, 0, 0, 1, -0.049999997, 1.1, 0.33)
-billboard = 1
+billboard = 2
 sprite_frames = SubResource("SpriteFrames_1vv7c")
 animation = &"fireAnimationTorch"
 autoplay = "fireAnimationTorch"
