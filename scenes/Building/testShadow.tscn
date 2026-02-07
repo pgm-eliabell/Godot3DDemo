@@ -16,6 +16,7 @@ light_color = Color(0.92941177, 0.49411765, 0.32941177, 1)
 light_energy = 4.629
 light_size = 0.227
 shadow_enabled = true
+shadow_blur = 1.412
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6852663)
