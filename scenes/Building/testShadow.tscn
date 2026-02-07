@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci2wdtnaojj4"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5m774"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ypyr"]
+size = Vector3(10, 10, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_5m774")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0537207)
+light_color = Color(0.92941177, 0.49411765, 0.32941177, 1)
+light_energy = 4.629
+light_size = 0.227
+shadow_enabled = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6852663)
+mesh = SubResource("BoxMesh_7ypyr")

@@ -12,3 +12,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02500001, 0)
 shape = SubResource("BoxShape3D_2l1kl")
 
 [node name="floor_stone" parent="." instance=ExtResource("1_3unlu")]
+
+[node name="floor_stone2" parent="." instance=ExtResource("1_3unlu")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.06999993, 0)

@@ -9,6 +9,9 @@ size = Vector3(4, 0.14999999, 4)
 
 [node name="floor_wood" parent="." instance=ExtResource("1_1x1mj")]
 
+[node name="floor_wood2" parent="." instance=ExtResource("1_1x1mj")]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0, -0.046072602, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02500001, 0)
 shape = SubResource("BoxShape3D_1x1mj")
