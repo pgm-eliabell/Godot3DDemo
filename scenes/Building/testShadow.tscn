@@ -21,3 +21,7 @@ shadow_blur = 1.412
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6852663)
 mesh = SubResource("BoxMesh_7ypyr")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7074585)
+size = Vector3(1, 1, 6.414917)
