@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=4 uid="uid://cp1hr74hfbjxm"]
 
-[ext_resource type="Texture2D" uid="uid://cpld7auygwiu4" path="res://assets/RandomAssets/spritesheetFireGif-removebg-preview.png" id="1_1vs5g"]
+[ext_resource type="Texture2D" uid="uid://cpld7auygwiu4" path="res://assets/MyAssets/spritesheetFireGif-removebg-preview.png" id="1_1vs5g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic7gy"]
 resource_name = "DungeonMat"
