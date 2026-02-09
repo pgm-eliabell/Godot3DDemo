@@ -41,7 +41,7 @@ _subresources={
 "animations": {
 "mixamo_com": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/Character/running.res",
+"save_to_file/fallback_path": "res://assets/Character/animationResFiles/running.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://byp2dtng2ombw",
 "settings/loop_mode": 0,
