@@ -2097,9 +2097,9 @@ _subresources={
 },
 "mixamo_com": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "",
+"save_to_file/fallback_path": "res://assets/Character/animationResFiles/Tpose.res",
 "save_to_file/keep_custom_tracks": true,
-"save_to_file/path": "",
+"save_to_file/path": "uid://tdttgwbvxgyw",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,

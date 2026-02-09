@@ -20,6 +20,7 @@ var walking_speed = 3
 var running_speed = 6
 
 var is_attacking = false
+var is_blocking = false
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -33,12 +34,19 @@ func _input(event):
 func _physics_process(delta: float) -> void:
 	if !animation_player.is_playing():
 		is_attacking = false
+		is_blocking = false
 	
-	if Input.is_action_just_pressed("attack"):
-		if animation_player.current_animation != "1H_Melee_Attack_Slice_Horizontal":
-			animation_player.play("1H_Melee_Attack_Slice_Horizontal")
-			is_attacking = true
+	#if Input.is_action_just_pressed("attack"):
+		#if animation_player.current_animation != "1H_Melee_Attack_Slice_Horizontal":
+			#animation_player.play("1H_Melee_Attack_Slice_Horizontal")
+			#is_attacking = true
 			
+	if Input.is_action_just_pressed("block"):
+		if animation_player.current_animation != "blockStance":
+			animation_player.play("BlockStance")
+			is_blocking = true
+			return
+		
 	if Input.is_action_pressed("shift"):
 		SPEED = running_speed
 		running = true
@@ -64,6 +72,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			if animation_player.current_animation != "Walking":
 				animation_player.play("Walking")
+
 		#debug_timer += delta
 		#if debug_timer >= 0.5:
 			#print("Direction: ", direction, " | Arrow rotation: ", debug_arrow.rotation_degrees)
@@ -75,7 +84,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = direction.z * SPEED
 		
 	else:
-		if !is_attacking:
+		if !is_attacking and !is_blocking:
 			if animation_player.current_animation != "Idle":
 				animation_player.play("Idle")
 					
