@@ -45,7 +45,6 @@ func _physics_process(delta: float) -> void:
 		if animation_player.current_animation != "blockStance":
 			animation_player.play("BlockStance")
 			is_blocking = true
-			return
 		
 	if Input.is_action_pressed("shift"):
 		SPEED = running_speed
