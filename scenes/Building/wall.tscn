@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnq1iv0oxyg86"]
+[gd_scene load_steps=3 format=3 uid="uid://v5jq38x37po1"]
 
 [ext_resource type="PackedScene" uid="uid://cyy27f22prkbk" path="res://assets/brackeys_3d_game_assets/dungeon_assets/building/wall.glb" id="1_jhgu6"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vasxs"]
 points = PackedVector3Array(2, 4, 0.5, 2, 0, 0.5, 2, 4, -0.5, -2, 4, 0.5, 2, 0, -0.5, -2, 0, 0.5, -2, 4, -0.5, -2, 0, -0.5)
 
-[node name="Wall" type="StaticBody3D"]
+[node name="wall" type="StaticBody3D"]
 
 [node name="wall2" parent="." instance=ExtResource("1_jhgu6")]
 

@@ -49,14 +49,14 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("shift"):
 		SPEED = running_speed
 		running = true
-		print("were running")
+		#print("were running")
 	else: 
 		SPEED = walking_speed
 		running = false
 		#print("were walking")
 	# Add the gravity.
 	if not is_on_floor():
-		print("where not on the floor")
+		#print("where not on the floor")
 		velocity += get_gravity() * delta
 
 	# Handle jump.
