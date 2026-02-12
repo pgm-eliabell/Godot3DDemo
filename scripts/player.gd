@@ -1,14 +1,9 @@
 extends CharacterBody3D
 
 @onready var camera_mount: Node3D = $Camera_Mount
-@onready var animation_player: AnimationPlayer = $CharacterVisual/AnimationPlayer
-
-
 @onready var character_visual: Node3D = $CharacterVisual
 @onready var debug_arrow: MeshInstance3D = $Debug_Arrow
-
-var debug_timer = 0.0
-
+@onready var animation_handler: Node3D = $CharacterVisual/AnimationHandler
 
 var SPEED = 3
 const JUMP_VELOCITY = 4.5
@@ -27,70 +22,67 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x*sens_horizontal))
-		character_visual.rotate_y(deg_to_rad(event.relative.x*sens_horizontal))
-		camera_mount.rotate_x(deg_to_rad(-event.relative.y*sens_vertical))
+		rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
+		character_visual.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
+		camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
 
-func _physics_process(delta: float) -> void:
-	#if !animation_player.is_playing():
-		#is_attacking = false
-		#is_blocking = false
-	
-	#if Input.is_action_just_pressed("attack"):
-		#if animation_player.current_animation != "1H_Melee_Attack_Slice_Horizontal":
-			#animation_player.play("1H_Melee_Attack_Slice_Horizontal")
-			#is_attacking = true
-			
-	#if Input.is_action_just_pressed("block"):
-		#if animation_player.current_animation != "blockStance":
-			#animation_player.play("BlockStance")
-			#is_blocking = true
-		
+func _physics_process(delta):
+	# Running vs walking
 	if Input.is_action_pressed("shift"):
 		SPEED = running_speed
 		running = true
-		#print("were running")
-	else: 
+	else:
 		SPEED = walking_speed
 		running = false
-		#print("were walking")
-	# Add the gravity.
+
+	# Gravity
 	if not is_on_floor():
-		#print("where not on the floor")
 		velocity += get_gravity() * delta
 
-	# Handle jump.
+	# Jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Input direction
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		#if running: 
-			#if animation_player.current_animation != "Running":
-				#animation_player.play("Running")
-		#else:
-			#if animation_player.current_animation != "Walking":
-				#animation_player.play("Walking")
 
-		#debug_timer += delta
-		#if debug_timer >= 0.5:
-			#print("Direction: ", direction, " | Arrow rotation: ", debug_arrow.rotation_degrees)
-			#debug_timer = 0
-		character_visual.look_at(position + -direction)
-		debug_arrow.look_at(position + direction)
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-		
+	# Handle attack/block input
+	if Input.is_action_just_pressed("attack") and not is_attacking:
+		is_attacking = true
+		animation_handler.call("play_attack")
+
+	elif Input.is_action_just_pressed("block") and not is_blocking:
+		is_blocking = true
+		animation_handler.call("play_block")
+
+	# Reset flags when AnimationHandler timers end
+	is_attacking = animation_handler.get("current_animation") == animation_handler.ATTACK
+	is_blocking = animation_handler.get("current_animation") == animation_handler.BLOCK
+
+	# Movement & animation
+	if not is_attacking:  # block movement if attacking
+		if direction.length() > 0:
+			character_visual.look_at(position + -direction)
+			debug_arrow.look_at(position + direction)
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+
+			if is_blocking:
+				animation_handler.call("set_animation_state", animation_handler.BLOCK)
+			elif running:
+				animation_handler.call("set_animation_state", animation_handler.RUN)
+			else:
+				animation_handler.call("set_animation_state", animation_handler.WALK)
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+			if is_blocking:
+				animation_handler.call("set_animation_state", animation_handler.BLOCK)
+			else:
+				animation_handler.call("set_animation_state", animation_handler.IDLE)
 	else:
-		#if !is_attacking and !is_blocking:
-			#if animation_player.current_animation != "Idle":
-				#animation_player.play("Idle")
-					
-				velocity.x = move_toward(velocity.x, 0, SPEED)
-				velocity.z = move_toward(velocity.z, 0, SPEED)
-		
-	if !is_attacking:
-		move_and_slide()
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	move_and_slide()
