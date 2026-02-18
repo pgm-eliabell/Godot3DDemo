@@ -18,16 +18,19 @@ var is_attacking = false
 var is_blocking = false
 
 func _ready():
+	#puts the mouse in locked mode
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+#calcutlations for mouse inputs
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
 		character_visual.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
 		camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
 
+#delta is time elapsed since last frame, should be about 0.666667...
 func _physics_process(delta):
-	# Running vs walking
+	#if shift is pressed, run else walk
 	if Input.is_action_pressed("shift"):
 		SPEED = running_speed
 		running = true
@@ -40,7 +43,7 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 
 	# Jump
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Input direction
@@ -51,6 +54,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		is_attacking = true
 		animation_handler.call("play_attack")
+		if Input.is_action_just_released("attack") and is_attacking:
+			is_attacking = false
 
 	elif Input.is_action_just_pressed("block") and not is_blocking:
 		is_blocking = true
