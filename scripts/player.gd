@@ -60,6 +60,8 @@ func _physics_process(delta):
 	elif Input.is_action_just_pressed("block") and not is_blocking:
 		is_blocking = true
 		animation_handler.call("play_block")
+		if Input.is_action_just_released("block") and is_attacking:
+			is_blocking = false
 
 	# Reset flags when AnimationHandler timers end
 	is_attacking = animation_handler.get("current_animation") == animation_handler.ATTACK
