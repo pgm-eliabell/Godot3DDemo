@@ -14,23 +14,16 @@ var running = false
 var walking_speed = 3
 var running_speed = 6
 
-var is_attacking = false
-var is_blocking = false
-
 func _ready():
-	#puts the mouse in locked mode
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-#calcutlations for mouse inputs
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
 		character_visual.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
 		camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
 
-#delta is time elapsed since last frame, should be about 0.666667...
 func _physics_process(delta):
-	#if shift is pressed, run else walk
 	if Input.is_action_pressed("shift"):
 		SPEED = running_speed
 		running = true
@@ -38,54 +31,41 @@ func _physics_process(delta):
 		SPEED = walking_speed
 		running = false
 
-	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Input direction
+	# Input — just trigger the handler, don't track state here
+	if Input.is_action_just_pressed("attack") and not animation_handler.is_in_state(animation_handler.ATTACK):
+		animation_handler.call("play_attack")
+	elif Input.is_action_just_pressed("block") and not animation_handler.is_in_state(animation_handler.BLOCK):
+		animation_handler.call("play_block")
+
+	# Ask the handler what state we're in, don't store it ourselves
+	var is_attacking = animation_handler.is_in_state(animation_handler.ATTACK)
+	var is_blocking = animation_handler.is_in_state(animation_handler.BLOCK)
+
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-	# Handle attack/block input
-	if Input.is_action_just_pressed("attack") and not is_attacking:
-		is_attacking = true
-		animation_handler.call("play_attack")
-		if Input.is_action_just_released("attack") and is_attacking:
-			is_attacking = false
-
-	elif Input.is_action_just_pressed("block") and not is_blocking:
-		is_blocking = true
-		animation_handler.call("play_block")
-
-	# Reset flags when AnimationHandler timers end
-	is_attacking = animation_handler.get("current_animation") == animation_handler.ATTACK
-	is_blocking = animation_handler.get("current_animation") == animation_handler.BLOCK
-
-	# Movement & animation
-	if not is_attacking:  # block movement if attacking
+	if not is_attacking and not is_blocking:
 		if direction.length() > 0:
 			character_visual.look_at(position + -direction)
 			debug_arrow.look_at(position + direction)
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
-
-			if is_blocking:
-				animation_handler.call("set_animation_state", animation_handler.BLOCK)
-			elif running:
+			#if is_blocking:
+				#animation_handler.call("set_animation_state", animation_handler.BLOCK)
+			if running:
 				animation_handler.call("set_animation_state", animation_handler.RUN)
 			else:
 				animation_handler.call("set_animation_state", animation_handler.WALK)
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
-			if is_blocking:
-				animation_handler.call("set_animation_state", animation_handler.BLOCK)
-			else:
-				animation_handler.call("set_animation_state", animation_handler.IDLE)
+			animation_handler.call("set_animation_state", animation_handler.IDLE)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)

@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://b2n52avs17755" path="res://scripts/player.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://yqplskulu3" path="res://assets/Character/Ch36_nonPBR_0.png" id="2_70d11"]
 [ext_resource type="Texture2D" uid="uid://c8xhcds3jbh1r" path="res://assets/Character/Ch36_nonPBR_3.png" id="3_cw2d6"]
-[ext_resource type="Animation" uid="uid://cmnrisqw3xti" path="res://assets/Character/animationResFiles/idle.res" id="4_khinc"]
+[ext_resource type="Animation" uid="uid://bgt6apjxiigbm" path="res://assets/Character/animationResFiles/idle.res" id="4_khinc"]
 [ext_resource type="Animation" uid="uid://byp2dtng2ombw" path="res://assets/Character/animationResFiles/running.res" id="5_bruh7"]
 [ext_resource type="Animation" uid="uid://dbx2qygtdxcun" path="res://assets/Character/animationResFiles/walking.res" id="6_6eyey"]
-[ext_resource type="Animation" uid="uid://tdttgwbvxgyw" path="res://assets/Character/animationResFiles/Tpose.res" id="7_cw2d6"]
+[ext_resource type="Animation" uid="uid://bafl1i4vvxxs3" path="res://assets/Character/animationResFiles/Tpose.res" id="7_cw2d6"]
 [ext_resource type="Script" uid="uid://bmyt0a3ldm0fv" path="res://scripts/AnimationHandler.gd" id="8_khinc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iu71k"]
@@ -1612,6 +1612,7 @@ animation = &"Walking"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_lkdrv"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_p7iby"]
+graph_offset = Vector2(-355.49997, -61.642456)
 nodes/output/position = Vector2(1160, 100)
 nodes/AnimIdle/node = SubResource("AnimationNodeAnimation_khinc")
 nodes/AnimIdle/position = Vector2(-60, 80)

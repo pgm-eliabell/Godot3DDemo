@@ -11,14 +11,12 @@ var run_val = 0.0
 var attack_val = 0.0
 var block_val = 0.0
 
-# Timers for one-shot animations
 var attack_timer = 0.0
 var block_timer = 0.0
 @export var attack_duration = 0.6
 @export var block_duration = 1.0
 
 func _physics_process(delta):
-	# Count down timers
 	if attack_timer > 0:
 		attack_timer -= delta
 		if attack_timer <= 0:
@@ -31,6 +29,10 @@ func _physics_process(delta):
 
 	handle_animation(delta)
 	update_tree()
+
+# --- NEW: let player.gd ask what state we're in ---
+func is_in_state(state) -> bool:
+	return current_animation == state
 
 func play_attack():
 	current_animation = ATTACK
