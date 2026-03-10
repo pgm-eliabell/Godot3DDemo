@@ -1,12 +1,12 @@
-[gd_scene load_steps=31 format=4 uid="uid://ddoecru21qaoc"]
+[gd_scene load_steps=27 format=4 uid="uid://ddoecru21qaoc"]
 
 [ext_resource type="Script" uid="uid://b2n52avs17755" path="res://scripts/player.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://yqplskulu3" path="res://assets/Character/Ch36_nonPBR_0.png" id="2_70d11"]
 [ext_resource type="Texture2D" uid="uid://c8xhcds3jbh1r" path="res://assets/Character/Ch36_nonPBR_3.png" id="3_cw2d6"]
-[ext_resource type="Animation" uid="uid://bgt6apjxiigbm" path="res://assets/Character/animationResFiles/idle.res" id="4_khinc"]
+[ext_resource type="Animation" uid="uid://cmnrisqw3xti" path="res://assets/Character/animationResFiles/idle.res" id="4_khinc"]
 [ext_resource type="Animation" uid="uid://byp2dtng2ombw" path="res://assets/Character/animationResFiles/running.res" id="5_bruh7"]
 [ext_resource type="Animation" uid="uid://dbx2qygtdxcun" path="res://assets/Character/animationResFiles/walking.res" id="6_6eyey"]
-[ext_resource type="Animation" uid="uid://bafl1i4vvxxs3" path="res://assets/Character/animationResFiles/Tpose.res" id="7_cw2d6"]
+[ext_resource type="Animation" uid="uid://tdttgwbvxgyw" path="res://assets/Character/animationResFiles/Tpose.res" id="7_cw2d6"]
 [ext_resource type="Script" uid="uid://bmyt0a3ldm0fv" path="res://scripts/AnimationHandler.gd" id="8_khinc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iu71k"]
@@ -1586,12 +1586,6 @@ _data = {
 &"Walking": ExtResource("6_6eyey")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d3wef"]
-animation = &"Attack"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cw2d6"]
-animation = &"BlockStance"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_khinc"]
 animation = &"Idle"
 
@@ -1601,10 +1595,6 @@ animation = &"Running"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6eyey"]
 animation = &"Walking"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_o4126"]
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_p7iby"]
-
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_d3wef"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0rnld"]
@@ -1612,7 +1602,7 @@ animation = &"Walking"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_lkdrv"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_p7iby"]
-graph_offset = Vector2(-355.49997, -61.642456)
+graph_offset = Vector2(-117.8028, -64.3468)
 nodes/output/position = Vector2(1160, 100)
 nodes/AnimIdle/node = SubResource("AnimationNodeAnimation_khinc")
 nodes/AnimIdle/position = Vector2(-60, 80)
@@ -1624,17 +1614,9 @@ nodes/Walk/node = SubResource("AnimationNodeBlend2_lkdrv")
 nodes/Walk/position = Vector2(280, 40)
 nodes/Run/node = SubResource("AnimationNodeBlend2_d3wef")
 nodes/Run/position = Vector2(500, 40)
-nodes/Attack/node = SubResource("AnimationNodeBlend2_o4126")
-nodes/Attack/position = Vector2(940, 60)
-nodes/AnimBlock/node = SubResource("AnimationNodeAnimation_cw2d6")
-nodes/AnimBlock/position = Vector2(380, 440)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_0rnld")
 nodes/StateMachine/position = Vector2(-380, 120)
-nodes/Block/node = SubResource("AnimationNodeBlend2_p7iby")
-nodes/Block/position = Vector2(700, 40)
-nodes/AnimAttack/node = SubResource("AnimationNodeAnimation_d3wef")
-nodes/AnimAttack/position = Vector2(760, 400)
-node_connections = [&"output", 0, &"Attack", &"Walk", 0, &"AnimIdle", &"Walk", 1, &"AnimWalk", &"Run", 0, &"Walk", &"Run", 1, &"AnimRunning", &"Attack", 0, &"Block", &"Attack", 1, &"AnimAttack", &"Block", 0, &"Run", &"Block", 1, &"AnimBlock"]
+node_connections = [&"output", 0, &"Run", &"Walk", 0, &"AnimIdle", &"Walk", 1, &"AnimWalk", &"Run", 0, &"Walk", &"Run", 1, &"AnimRunning"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6fml"]
 radius = 0.3
@@ -2132,8 +2114,6 @@ tree_root = SubResource("AnimationNodeBlendTree_p7iby")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Walk/blend_amount = 0.0
 parameters/Run/blend_amount = 0.0
-parameters/Attack/blend_amount = 0.0
-parameters/Block/blend_amount = 0.0
 
 [node name="AnimationHandler" type="Node3D" parent="CharacterVisual"]
 script = ExtResource("8_khinc")
