@@ -48,6 +48,7 @@ func play_block():
 	block_timer = animation_player.current_animation_length
 
 func set_animation_state(state):
+	print("set_anim_stat function ran")
 	if state == ATTACK:
 		play_attack()
 	elif state == BLOCK:
