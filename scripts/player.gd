@@ -37,10 +37,11 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Input — just trigger the handler, don't track state here
+	# If attack is triggered and not currently active, call the animationHandler Node. 
 	if Input.is_action_just_pressed("attack") and not animation_handler.is_in_state(animation_handler.ATTACK):
 		animation_handler.call("play_attack")
 	elif Input.is_action_just_pressed("block") and not animation_handler.is_in_state(animation_handler.BLOCK):
+		print("current state block: ", animation_handler.current_animation)
 		animation_handler.call("play_block")
 
 	# Ask the handler what state we're in, don't store it ourselves
