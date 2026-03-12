@@ -1,12 +1,12 @@
-[gd_scene load_steps=27 format=4 uid="uid://ddoecru21qaoc"]
+[gd_scene load_steps=35 format=4 uid="uid://ddoecru21qaoc"]
 
 [ext_resource type="Script" uid="uid://b2n52avs17755" path="res://scripts/player.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://yqplskulu3" path="res://assets/Character/Ch36_nonPBR_0.png" id="2_70d11"]
 [ext_resource type="Texture2D" uid="uid://c8xhcds3jbh1r" path="res://assets/Character/Ch36_nonPBR_3.png" id="3_cw2d6"]
-[ext_resource type="Animation" uid="uid://cmnrisqw3xti" path="res://assets/Character/animationResFiles/idle.res" id="4_khinc"]
+[ext_resource type="Animation" uid="uid://bgt6apjxiigbm" path="res://assets/Character/animationResFiles/idle.res" id="4_khinc"]
 [ext_resource type="Animation" uid="uid://byp2dtng2ombw" path="res://assets/Character/animationResFiles/running.res" id="5_bruh7"]
 [ext_resource type="Animation" uid="uid://dbx2qygtdxcun" path="res://assets/Character/animationResFiles/walking.res" id="6_6eyey"]
-[ext_resource type="Animation" uid="uid://tdttgwbvxgyw" path="res://assets/Character/animationResFiles/Tpose.res" id="7_cw2d6"]
+[ext_resource type="Animation" uid="uid://bafl1i4vvxxs3" path="res://assets/Character/animationResFiles/Tpose.res" id="7_cw2d6"]
 [ext_resource type="Script" uid="uid://bmyt0a3ldm0fv" path="res://scripts/AnimationHandler.gd" id="8_khinc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iu71k"]
@@ -1586,6 +1586,34 @@ _data = {
 &"Walking": ExtResource("6_6eyey")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d3wef"]
+animation = &"Walking"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o4126"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lkdrv"]
+animation = &"Walking"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p7iby"]
+animation = &"Running"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_0rnld"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_d3wef")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_o4126")
+blend_point_1/pos = -1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_lkdrv")
+blend_point_2/pos = -0.4
+blend_point_3/node = SubResource("AnimationNodeAnimation_p7iby")
+blend_point_3/pos = 0.90000004
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_srp4u"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jfpux"]
+animation = &"BlockStance"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_khinc"]
 animation = &"Idle"
 
@@ -1595,28 +1623,38 @@ animation = &"Running"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6eyey"]
 animation = &"Walking"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_d3wef"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_khinc"]
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0rnld"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_bruh7"]
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_lkdrv"]
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_61ith"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ebwui"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_p7iby"]
-graph_offset = Vector2(-117.8028, -64.3468)
+graph_offset = Vector2(338.7223, 49.421272)
 nodes/output/position = Vector2(1160, 100)
-nodes/AnimIdle/node = SubResource("AnimationNodeAnimation_khinc")
-nodes/AnimIdle/position = Vector2(-60, 80)
-nodes/AnimWalk/node = SubResource("AnimationNodeAnimation_6eyey")
-nodes/AnimWalk/position = Vector2(-40, 360)
-nodes/AnimRunning/node = SubResource("AnimationNodeAnimation_bruh7")
-nodes/AnimRunning/position = Vector2(160, 420)
-nodes/Walk/node = SubResource("AnimationNodeBlend2_lkdrv")
-nodes/Walk/position = Vector2(280, 40)
-nodes/Run/node = SubResource("AnimationNodeBlend2_d3wef")
-nodes/Run/position = Vector2(500, 40)
-nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_0rnld")
-nodes/StateMachine/position = Vector2(-380, 120)
-node_connections = [&"output", 0, &"Run", &"Walk", 0, &"AnimIdle", &"Walk", 1, &"AnimWalk", &"Run", 0, &"Walk", &"Run", 1, &"AnimRunning"]
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_0rnld")
+nodes/BlendSpace1D/position = Vector2(800, 120)
+nodes/animIdle/node = SubResource("AnimationNodeAnimation_khinc")
+nodes/animIdle/position = Vector2(-140, 140)
+nodes/animRunning/node = SubResource("AnimationNodeAnimation_bruh7")
+nodes/animRunning/position = Vector2(160, 440)
+nodes/animWalk/node = SubResource("AnimationNodeAnimation_6eyey")
+nodes/animWalk/position = Vector2(-140, 400)
+nodes/blend2Walk/node = SubResource("AnimationNodeBlend2_bruh7")
+nodes/blend2Walk/position = Vector2(203.38329, 133.08751)
+nodes/blend2Run/node = SubResource("AnimationNodeBlend2_khinc")
+nodes/blend2Run/position = Vector2(540, 160)
+nodes/oneshotAttack/node = SubResource("AnimationNodeOneShot_61ith")
+nodes/oneshotAttack/position = Vector2(540, 540)
+nodes/oneshotBlock/node = SubResource("AnimationNodeOneShot_ebwui")
+nodes/oneshotBlock/position = Vector2(840, 720)
+nodes/animAttack/node = SubResource("AnimationNodeAnimation_srp4u")
+nodes/animAttack/position = Vector2(300, 720)
+nodes/animBlock/node = SubResource("AnimationNodeAnimation_jfpux")
+nodes/animBlock/position = Vector2(380, 920)
+node_connections = [&"output", 0, &"BlendSpace1D", &"blend2Walk", 0, &"animIdle", &"blend2Walk", 1, &"animWalk", &"blend2Run", 0, &"blend2Walk", &"blend2Run", 1, &"animRunning", &"oneshotAttack", 0, &"animAttack", &"oneshotBlock", 0, &"animBlock"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6fml"]
 radius = 0.3
@@ -1646,7 +1684,7 @@ bones/0/name = "mixamorig1_Hips"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2888183e-07, 0.99754, 0.030078819)
 bones/0/enabled = true
-bones/0/position = Vector3(-2.2888183e-07, 0.99754, 0.030078819)
+bones/0/position = Vector3(0.00046453835, 0.99523634, 0.005141588)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "mixamorig1_Spine"
@@ -2112,11 +2150,21 @@ autoplay = "Idle"
 root_motion_track = NodePath("Skeleton3D:mixamorig1_Hips")
 tree_root = SubResource("AnimationNodeBlendTree_p7iby")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Walk/blend_amount = 0.0
-parameters/Run/blend_amount = 0.0
+parameters/BlendSpace1D/blend_position = 0.0
+parameters/blend2Walk/blend_amount = 0.0
+parameters/blend2Run/blend_amount = 0.0
+parameters/oneshotAttack/active = false
+parameters/oneshotAttack/internal_active = false
+parameters/oneshotAttack/request = 0
+parameters/oneshotBlock/active = false
+parameters/oneshotBlock/internal_active = false
+parameters/oneshotBlock/request = 0
 
 [node name="AnimationHandler" type="Node3D" parent="CharacterVisual"]
 script = ExtResource("8_khinc")
+blend_speed = null
+attack_duration = null
+block_duration = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)

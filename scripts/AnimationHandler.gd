@@ -35,15 +35,20 @@ func _physics_process(delta):
 func is_in_state(state) -> bool:
 	return current_animation == state
 
-func play_attack():
-	animation_tree.active = false  # hand control back to AnimationPlayer
-	animation_player.play("Attack")
-	current_animation = ATTACK
+func play_attack():  #first function to be called when attack is triggered from the Player.gd
+	current_animation = ATTACK 
 	attack_timer = animation_player.current_animation_length
+	animation_tree["parameters/blendAttack/request"] = an,
+
+
+#var move_speed = 150
+#
+#var current_speed = horizontal_velocity.length()
+#var blend = clamp(current_speed / move_speed, 0.0, 1.0)
+#
+#anim_tree["parameters/MovementBSpace1D/blend_position"] = blend
 
 func play_block():
-	animation_tree.active = false
-	animation_player.play("BlockStance")
 	current_animation = BLOCK
 	block_timer = animation_player.current_animation_length
 
