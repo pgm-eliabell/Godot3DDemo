@@ -18,63 +18,38 @@ var block_timer = 0.0
 func _physics_process(delta):
 	if attack_timer > 0:
 		attack_timer -= delta
-		#print(attack_timer)
 		if attack_timer <= 0:
 			current_animation = IDLE
-			animation_tree.active = true 
-
+			animation_tree["parameters/BlendSpace1DMovement/blend_position"] = 0.0
 	if block_timer > 0:
 		block_timer -= delta
 		if block_timer <= 0:
 			current_animation = IDLE
-			animation_tree.active = true
+			animation_tree["parameters/BlendSpace1DMovement/blend_position"] = 0.0
 
-	handle_animation(delta)
-	update_tree()
+	#handle_animation(delta)
+	#update_tree()
 
-func is_in_state(state) -> bool:
+# checks what the current state is, and compares it to the state it should be in. if true, return true, 
+func is_in_state(state: int) -> bool:
+	print("current state: ", current_animation, "state to compare: ", state)
+	# this will return 0,1,2,3,4 respectively, these are the indexes of the enum states defined at the top {idle, walk, run, attack, block} etc. 
 	return current_animation == state
 
-func play_attack():  #first function to be called when attack is triggered from the Player.gd
-	current_animation = ATTACK 
-	attack_timer = animation_player.current_animation_length
-	animation_tree["parameters/blendAttack/request"] = an,
-
-
-#var move_speed = 150
-#
-#var current_speed = horizontal_velocity.length()
-#var blend = clamp(current_speed / move_speed, 0.0, 1.0)
-#
-#anim_tree["parameters/MovementBSpace1D/blend_position"] = blend
-
-func play_block():
-	current_animation = BLOCK
-	block_timer = animation_player.current_animation_length
-
-func set_animation_state(state):
+func set_animation_state(state: int, speed = 0.0, max_speed = 6.0):
 	if state == ATTACK:
-		play_attack()
+		current_animation = ATTACK 
+		attack_timer = animation_player.current_animation_length
+		animation_tree["parameters/oneshotAttack/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	elif state == BLOCK:
-		play_block()
+		current_animation = BLOCK
+		block_timer = animation_player.current_animation_length
+		animation_tree["parameters/oneshotBlock/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	elif state == WALK or state == RUN or state == IDLE:
+		current_animation = state
+		animation_tree.active = true
+		var blendValue = clamp(speed / max_speed, 0.0, 1.0)
+		#print(blendValue)
+		animation_tree["parameters/BlendSpace1DMovement/blend_position"] = blendValue
 	else:
 		current_animation = state
-
-func handle_animation(delta):
-	match current_animation:
-		IDLE:
-			walk_val = lerpf(walk_val, 0, blend_speed * delta)
-			run_val = lerpf(run_val, 0, blend_speed * delta)
-		WALK:
-			walk_val = lerpf(walk_val, 1, blend_speed * delta)
-			run_val = lerpf(run_val, 0, blend_speed * delta)
-		RUN:
-			walk_val = lerpf(walk_val, 0, blend_speed * delta)
-			run_val = lerpf(run_val, 1, blend_speed * delta)
-		ATTACK, BLOCK:
-			walk_val = lerpf(walk_val, 0, blend_speed * delta)
-			run_val = lerpf(run_val, 0, blend_speed * delta)
-
-func update_tree():
-	animation_tree["parameters/Walk/blend_amount"] = walk_val
-	animation_tree["parameters/Run/blend_amount"] = run_val

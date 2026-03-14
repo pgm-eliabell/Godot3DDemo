@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://ddoecru21qaoc"]
+[gd_scene format=4 uid="uid://ddoecru21qaoc"]
 
 [ext_resource type="Script" uid="uid://b2n52avs17755" path="res://scripts/player.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://yqplskulu3" path="res://assets/Character/Ch36_nonPBR_0.png" id="2_70d11"]
@@ -1586,9 +1586,6 @@ _data = {
 &"Walking": ExtResource("6_6eyey")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d3wef"]
-animation = &"Walking"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o4126"]
 animation = &"Idle"
 
@@ -1598,15 +1595,19 @@ animation = &"Walking"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p7iby"]
 animation = &"Running"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d3wef"]
+animation = &"Idle"
+
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_0rnld"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_d3wef")
+blend_point_0/node = SubResource("AnimationNodeAnimation_o4126")
 blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_o4126")
-blend_point_1/pos = -1.0
-blend_point_2/node = SubResource("AnimationNodeAnimation_lkdrv")
-blend_point_2/pos = -0.4
-blend_point_3/node = SubResource("AnimationNodeAnimation_p7iby")
-blend_point_3/pos = 0.90000004
+blend_point_1/node = SubResource("AnimationNodeAnimation_lkdrv")
+blend_point_1/pos = 0.5
+blend_point_2/node = SubResource("AnimationNodeAnimation_p7iby")
+blend_point_2/pos = 1.0
+blend_point_3/node = SubResource("AnimationNodeAnimation_d3wef")
+blend_point_3/pos = 0.02
+snap = 0.02
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_srp4u"]
 animation = &"Attack"
@@ -1632,29 +1633,29 @@ animation = &"Walking"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ebwui"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_p7iby"]
-graph_offset = Vector2(338.7223, 49.421272)
-nodes/output/position = Vector2(1160, 100)
-nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_0rnld")
-nodes/BlendSpace1D/position = Vector2(800, 120)
+graph_offset = Vector2(181.65479, 40.4097)
+nodes/output/position = Vector2(1920, 80)
+nodes/BlendSpace1DMovement/node = SubResource("AnimationNodeBlendSpace1D_0rnld")
+nodes/BlendSpace1DMovement/position = Vector2(720, 80)
 nodes/animIdle/node = SubResource("AnimationNodeAnimation_khinc")
-nodes/animIdle/position = Vector2(-140, 140)
+nodes/animIdle/position = Vector2(-720, 200)
 nodes/animRunning/node = SubResource("AnimationNodeAnimation_bruh7")
-nodes/animRunning/position = Vector2(160, 440)
+nodes/animRunning/position = Vector2(-420, 500)
 nodes/animWalk/node = SubResource("AnimationNodeAnimation_6eyey")
-nodes/animWalk/position = Vector2(-140, 400)
+nodes/animWalk/position = Vector2(-720, 460)
 nodes/blend2Walk/node = SubResource("AnimationNodeBlend2_bruh7")
-nodes/blend2Walk/position = Vector2(203.38329, 133.08751)
+nodes/blend2Walk/position = Vector2(-360, 200)
 nodes/blend2Run/node = SubResource("AnimationNodeBlend2_khinc")
-nodes/blend2Run/position = Vector2(540, 160)
+nodes/blend2Run/position = Vector2(-40, 220)
 nodes/oneshotAttack/node = SubResource("AnimationNodeOneShot_61ith")
-nodes/oneshotAttack/position = Vector2(540, 540)
+nodes/oneshotAttack/position = Vector2(1320, 80)
 nodes/oneshotBlock/node = SubResource("AnimationNodeOneShot_ebwui")
-nodes/oneshotBlock/position = Vector2(840, 720)
+nodes/oneshotBlock/position = Vector2(1600, 80)
 nodes/animAttack/node = SubResource("AnimationNodeAnimation_srp4u")
-nodes/animAttack/position = Vector2(300, 720)
+nodes/animAttack/position = Vector2(1120, 460)
 nodes/animBlock/node = SubResource("AnimationNodeAnimation_jfpux")
-nodes/animBlock/position = Vector2(380, 920)
-node_connections = [&"output", 0, &"BlendSpace1D", &"blend2Walk", 0, &"animIdle", &"blend2Walk", 1, &"animWalk", &"blend2Run", 0, &"blend2Walk", &"blend2Run", 1, &"animRunning", &"oneshotAttack", 0, &"animAttack", &"oneshotBlock", 0, &"animBlock"]
+nodes/animBlock/position = Vector2(1380, 480)
+node_connections = [&"output", 0, &"oneshotBlock", &"blend2Walk", 0, &"animIdle", &"blend2Walk", 1, &"animWalk", &"blend2Run", 0, &"blend2Walk", &"blend2Run", 1, &"animRunning", &"oneshotAttack", 0, &"BlendSpace1DMovement", &"oneshotAttack", 1, &"animAttack", &"oneshotBlock", 0, &"oneshotAttack", &"oneshotBlock", 1, &"animBlock"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6fml"]
 radius = 0.3
@@ -1673,18 +1674,18 @@ top_radius = 0.0
 bottom_radius = 0.1
 height = 0.5
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=942084250]
 script = ExtResource("1_v6fml")
 
-[node name="CharacterVisual" type="Node3D" parent="."]
+[node name="CharacterVisual" type="Node3D" parent="." unique_id=610385612]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="CharacterVisual"]
+[node name="Skeleton3D" type="Skeleton3D" parent="CharacterVisual" unique_id=2057790085]
 bones/0/name = "mixamorig1_Hips"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2888183e-07, 0.99754, 0.030078819)
 bones/0/enabled = true
-bones/0/position = Vector3(0.00046453835, 0.99523634, 0.005141588)
+bones/0/position = Vector3(-2.2888183e-07, 0.99754, 0.030078819)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "mixamorig1_Spine"
@@ -2136,21 +2137,19 @@ bones/64/position = Vector3(1.8326031e-10, 0.06180026, 6.158407e-13)
 bones/64/rotation = Quaternion(-6.529636e-11, 6.0769525e-17, 6.9388935e-18, 1)
 bones/64/scale = Vector3(1, 1, 1)
 
-[node name="CharacterSkinMesh" type="MeshInstance3D" parent="CharacterVisual/Skeleton3D"]
+[node name="CharacterSkinMesh" type="MeshInstance3D" parent="CharacterVisual/Skeleton3D" unique_id=495677886]
 mesh = SubResource("ArrayMesh_2rekx")
 skin = SubResource("Skin_4icsj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterVisual"]
-libraries = {
-&"": SubResource("AnimationLibrary_d3wef")
-}
-autoplay = "Idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterVisual" unique_id=504613724]
+libraries/ = SubResource("AnimationLibrary_d3wef")
+autoplay = &"Idle"
 
-[node name="AnimationTree" type="AnimationTree" parent="CharacterVisual"]
+[node name="AnimationTree" type="AnimationTree" parent="CharacterVisual" unique_id=914528323]
 root_motion_track = NodePath("Skeleton3D:mixamorig1_Hips")
 tree_root = SubResource("AnimationNodeBlendTree_p7iby")
 anim_player = NodePath("../AnimationPlayer")
-parameters/BlendSpace1D/blend_position = 0.0
+parameters/BlendSpace1DMovement/blend_position = 0.0
 parameters/blend2Walk/blend_amount = 0.0
 parameters/blend2Run/blend_amount = 0.0
 parameters/oneshotAttack/active = false
@@ -2160,28 +2159,25 @@ parameters/oneshotBlock/active = false
 parameters/oneshotBlock/internal_active = false
 parameters/oneshotBlock/request = 0
 
-[node name="AnimationHandler" type="Node3D" parent="CharacterVisual"]
+[node name="AnimationHandler" type="Node3D" parent="CharacterVisual" unique_id=1779923855]
 script = ExtResource("8_khinc")
-blend_speed = null
-attack_duration = null
-block_duration = null
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1374271806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
 shape = SubResource("CapsuleShape3D_v6fml")
 
-[node name="Camera_Mount" type="Node3D" parent="."]
+[node name="Camera_Mount" type="Node3D" parent="." unique_id=625385761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Camera_Mount"]
+[node name="Camera3D" type="Camera3D" parent="Camera_Mount" unique_id=1260788827]
 transform = Transform3D(1, 0, 0, 0, 0.9848078, 0.1736482, 0, -0.1736482, 0.9848078, 0.70000005, 1.2, 1.4)
 fov = 103.7643
 
-[node name="Debug_Arrow" type="MeshInstance3D" parent="."]
+[node name="Debug_Arrow" type="MeshInstance3D" parent="." unique_id=988675432]
 transform = Transform3D(1, -8.742278e-08, -8.742278e-08, 8.742278e-08, -4.371139e-08, 1, -8.742278e-08, -1, -4.371138e-08, -6.9938224e-08, 1, -0.8)
 material_override = SubResource("StandardMaterial3D_v6fml")
 mesh = SubResource("CylinderMesh_3li8b")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_Arrow"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_Arrow" unique_id=1248762463]
 transform = Transform3D(1, 0, 1.6703741e-22, 0, 1, 0, 0, 0, 1, 1.4210855e-14, 0.719634, 1.1920929e-07)
 mesh = SubResource("CylinderMesh_v6fml")
