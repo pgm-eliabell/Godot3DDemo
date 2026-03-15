@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bixo6orhs6sdy"]
 
-[ext_resource type="Script" uid="uid://b1xxnya0j3bbt" path="res://scripts/npc.gd" id="1_0tygy"]
+[ext_resource type="Script" uid="uid://b1xxnya0j3bbt" path="res://scripts/Npc.gd" id="1_0tygy"]
 [ext_resource type="Texture2D" uid="uid://yqplskulu3" path="res://assets/Character/Ch36_nonPBR_0.png" id="2_sptji"]
 [ext_resource type="Texture2D" uid="uid://c8xhcds3jbh1r" path="res://assets/Character/Ch36_nonPBR_3.png" id="3_v4e37"]
 [ext_resource type="Animation" uid="uid://bgt6apjxiigbm" path="res://assets/Character/animationResFiles/idle.res" id="4_1h837"]
@@ -2164,13 +2164,6 @@ script = ExtResource("8_yf2ql")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1374271806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
 shape = SubResource("CapsuleShape3D_v6fml")
-
-[node name="Camera_Mount" type="Node3D" parent="." unique_id=625385761]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
-
-[node name="Camera3D" type="Camera3D" parent="Camera_Mount" unique_id=1260788827]
-transform = Transform3D(1, 0, 0, 0, 0.9848078, 0.1736482, 0, -0.1736482, 0.9848078, 0.70000005, 1.2, 1.4)
-fov = 103.7643
 
 [node name="Debug_Arrow" type="MeshInstance3D" parent="." unique_id=988675432]
 transform = Transform3D(1, -8.742278e-08, -8.742278e-08, 8.742278e-08, -4.371139e-08, 1, -8.742278e-08, -1, -4.371138e-08, -6.9938224e-08, 1, -0.8)
