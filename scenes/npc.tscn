@@ -1,23 +1,23 @@
-[gd_scene format=4 uid="uid://ddoecru21qaoc"]
+[gd_scene format=4 uid="uid://bixo6orhs6sdy"]
 
-[ext_resource type="Script" uid="uid://b2n52avs17755" path="res://scripts/player.gd" id="1_v6fml"]
-[ext_resource type="Texture2D" uid="uid://yqplskulu3" path="res://assets/Character/Ch36_nonPBR_0.png" id="2_70d11"]
-[ext_resource type="Texture2D" uid="uid://c8xhcds3jbh1r" path="res://assets/Character/Ch36_nonPBR_3.png" id="3_cw2d6"]
-[ext_resource type="Animation" uid="uid://bgt6apjxiigbm" path="res://assets/Character/animationResFiles/idle.res" id="4_khinc"]
-[ext_resource type="Animation" uid="uid://byp2dtng2ombw" path="res://assets/Character/animationResFiles/running.res" id="5_bruh7"]
-[ext_resource type="Animation" uid="uid://dbx2qygtdxcun" path="res://assets/Character/animationResFiles/walking.res" id="6_6eyey"]
-[ext_resource type="Animation" uid="uid://bafl1i4vvxxs3" path="res://assets/Character/animationResFiles/Tpose.res" id="7_cw2d6"]
-[ext_resource type="Script" uid="uid://bmyt0a3ldm0fv" path="res://scripts/AnimationHandler.gd" id="8_khinc"]
+[ext_resource type="Script" uid="uid://b1xxnya0j3bbt" path="res://scripts/npc.gd" id="1_0tygy"]
+[ext_resource type="Texture2D" uid="uid://yqplskulu3" path="res://assets/Character/Ch36_nonPBR_0.png" id="2_sptji"]
+[ext_resource type="Texture2D" uid="uid://c8xhcds3jbh1r" path="res://assets/Character/Ch36_nonPBR_3.png" id="3_v4e37"]
+[ext_resource type="Animation" uid="uid://bgt6apjxiigbm" path="res://assets/Character/animationResFiles/idle.res" id="4_1h837"]
+[ext_resource type="Animation" uid="uid://byp2dtng2ombw" path="res://assets/Character/animationResFiles/running.res" id="5_gl1un"]
+[ext_resource type="Animation" uid="uid://bafl1i4vvxxs3" path="res://assets/Character/animationResFiles/Tpose.res" id="6_wuru7"]
+[ext_resource type="Animation" uid="uid://dbx2qygtdxcun" path="res://assets/Character/animationResFiles/walking.res" id="7_nyaq3"]
+[ext_resource type="Script" uid="uid://bmyt0a3ldm0fv" path="res://scripts/AnimationHandler.gd" id="8_yf2ql"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iu71k"]
 resource_name = "Ch36_Body"
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
-albedo_texture = ExtResource("2_70d11")
+albedo_texture = ExtResource("2_sptji")
 emission_enabled = true
 normal_enabled = true
 normal_scale = 0.0
-normal_texture = ExtResource("3_cw2d6")
+normal_texture = ExtResource("3_v4e37")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2rekx"]
 resource_name = "Ch36"
@@ -1579,11 +1579,11 @@ tracks/64/keys = PackedFloat32Array(0, 1, -6.529636e-11, 6.0769525e-17, 6.938893
 _data = {
 &"Attack": SubResource("Animation_cw2d6"),
 &"BlockStance": SubResource("Animation_khinc"),
-&"Idle": ExtResource("4_khinc"),
+&"Idle": ExtResource("4_1h837"),
 &"RESET": SubResource("Animation_bruh7"),
-&"Running": ExtResource("5_bruh7"),
-&"Tpose": ExtResource("7_cw2d6"),
-&"Walking": ExtResource("6_6eyey")
+&"Running": ExtResource("5_gl1un"),
+&"Tpose": ExtResource("6_wuru7"),
+&"Walking": ExtResource("7_nyaq3")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o4126"]
@@ -1673,8 +1673,8 @@ top_radius = 0.0
 bottom_radius = 0.1
 height = 0.5
 
-[node name="Player" type="CharacterBody3D" unique_id=942084250]
-script = ExtResource("1_v6fml")
+[node name="NPC" type="CharacterBody3D" unique_id=942084250]
+script = ExtResource("1_0tygy")
 
 [node name="CharacterVisual" type="Node3D" parent="." unique_id=610385612]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
@@ -2159,7 +2159,7 @@ parameters/oneshotBlock/internal_active = false
 parameters/oneshotBlock/request = 0
 
 [node name="AnimationHandler" type="Node3D" parent="CharacterVisual" unique_id=1779923855]
-script = ExtResource("8_khinc")
+script = ExtResource("8_yf2ql")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1374271806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
