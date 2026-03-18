@@ -98,6 +98,9 @@ func _on_attack_body_entered(body):
 	if body == self:
 		print(body.name ,"hit self, you can ignore this")
 		return
+	if not body is BaseCharacter:
+		print(self.name, " hit -> ", body.name, " you can ignore this")
+		return
 	print(self.name ," hit ", body.name)
 	
 	body.take_damage(10)
