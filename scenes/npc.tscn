@@ -199,6 +199,9 @@ bind/51/name = &"mixamorig1_RightHandThumb3"
 bind/51/bone = -1
 bind/51/pose = Transform3D(0.5746257, -0.05374949, 0.8166492, -0.7573322, -0.4131864, 0.5056932, 0.31024766, -0.90905917, -0.27813378, 0.48342052, -0.032126717, 1.4954644)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0tygy"]
+size = Vector3(0.105, 0.2, 0.1)
+
 [sub_resource type="Animation" id="Animation_cw2d6"]
 resource_name = "Attack"
 length = 1.5
@@ -2140,6 +2143,18 @@ bones/64/scale = Vector3(1, 1, 1)
 mesh = SubResource("ArrayMesh_2rekx")
 skin = SubResource("Skin_4icsj")
 
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="CharacterVisual/Skeleton3D" unique_id=283281807]
+transform = Transform3D(0.17789604, 0.103106335, -0.97862816, -0.2265041, -0.96350884, -0.14268404, -0.95762444, 0.24704766, -0.14805013, 0.26391247, 0.95587325, 0.04556802)
+bone_name = "mixamorig1_LeftHand"
+bone_idx = 10
+
+[node name="Area3D" type="Area3D" parent="CharacterVisual/Skeleton3D/BoneAttachment3D" unique_id=853794427]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterVisual/Skeleton3D/BoneAttachment3D/Area3D" unique_id=907116616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099999994, 0)
+shape = SubResource("BoxShape3D_0tygy")
+debug_color = Color(1, 0, 0, 0.41960785)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterVisual" unique_id=504613724]
 libraries/ = SubResource("AnimationLibrary_d3wef")
 autoplay = &"Idle"
@@ -2173,3 +2188,10 @@ mesh = SubResource("CylinderMesh_3li8b")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_Arrow" unique_id=1248762463]
 transform = Transform3D(1, 0, 1.6703741e-22, 0, 1, 0, 0, 0, 1, 1.4210855e-14, 0.719634, 1.1920929e-07)
 mesh = SubResource("CylinderMesh_v6fml")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1117881003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 1.9000001, -0.0897634)
+
+[node name="Label3D" type="Label3D" parent="Node3D" unique_id=876886002]
+billboard = 1
+text = "HP: 100"

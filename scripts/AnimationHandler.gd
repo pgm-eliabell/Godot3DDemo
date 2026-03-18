@@ -27,7 +27,7 @@ func _get_animation_length_or_fallback(animation_name: StringName, fallback: flo
 
 func _physics_process(delta):
 	if attack_timer > 0 and current_animation == ATTACK:
-		print("attack timer psyhyc triggered:", attack_timer)
+		#print("attack timer psyhyc triggered:", attack_timer)
 		attack_timer -= delta
 		if attack_timer <= 0:
 			current_animation = IDLE

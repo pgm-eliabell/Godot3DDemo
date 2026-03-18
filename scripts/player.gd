@@ -1,3 +1,4 @@
+class_name player 
 extends Character
 
 @onready var camera_mount: Node3D = $Camera_Mount
@@ -6,6 +7,7 @@ extends Character
 @export var sens_vertical = 0.5
 
 func _ready():
+	super._ready() # this is needed because character.gd has its own _ready, and if it does, it doesnt run the one of the children anymore.
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event):

@@ -1,8 +1,9 @@
-class_name npc extends Character
+class_name npc 
+extends Character
 
 func get_input_direction() -> Vector2:
 	var dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	print(dir)
+	#print(dir)
 	return dir
 	
 func wants_to_attack() -> bool:

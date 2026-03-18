@@ -1,18 +1,27 @@
 class_name Character
 extends CharacterBody3D
 
+@onready var attack_area_3d: Area3D = $CharacterVisual/Skeleton3D/BoneAttachment3D/Area3D
 @onready var character_visual: Node3D = $CharacterVisual
 @onready var debug_arrow: MeshInstance3D = $Debug_Arrow
 @onready var animation_handler: Node3D = $CharacterVisual/AnimationHandler
+@onready var label_3d: Label3D = $Node3D/Label3D
 
 
 var SPEED = 3
 const JUMP_VELOCITY = 4.5
 
+var HP = 100
 var running = false
 var walking_speed = 3
 var running_speed = 6
 
+func _ready():
+	attack_area_3d.body_entered.connect(_on_attack_body_entered)
+	label_3d.text = "HP: " + str(HP) 
+	#print("current characters affected: ", self.name )
+	#print(label_3d.text)
+	
 func _physics_process(delta):
 	if Input.is_action_pressed("shift"):
 		SPEED = running_speed
@@ -67,11 +76,12 @@ func _physics_process(delta):
 			animation_handler.call("set_animation_state", animation_handler.IDLE, 0)
 			
 	move_and_slide()
-			
+
 func get_input_direction() -> Vector2:
 	return Vector2.ZERO
 		
 func wants_to_attack() -> bool:
+		
 	return false
 		
 func wants_to_block() -> bool:
@@ -79,3 +89,17 @@ func wants_to_block() -> bool:
 	
 func wants_to_jump() -> bool:
 	return false
+	
+func take_damage(amount: int)-> void:
+	HP -= amount
+	label_3d.text = "HP: " + str(HP) #this does not define the variable type, its just to change the int to a string for display purposes
+	
+func _on_attack_body_entered(body):
+	if body == self:
+		print(body.name ,"hit self, you can ignore this")
+		return
+	print(self.name ," hit ", body.name)
+	
+	body.take_damage(10)
+	
+	
