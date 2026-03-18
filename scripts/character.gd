@@ -1,4 +1,4 @@
-class_name Character
+class_name BaseCharacter
 extends CharacterBody3D
 
 @onready var attack_area_3d: Area3D = $CharacterVisual/Skeleton3D/BoneAttachment3D/Area3D

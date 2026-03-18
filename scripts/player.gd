@@ -1,5 +1,5 @@
 class_name player 
-extends Character
+extends BaseCharacter
 
 @onready var camera_mount: Node3D = $Camera_Mount
 

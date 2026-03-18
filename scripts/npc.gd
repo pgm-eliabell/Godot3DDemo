@@ -1,5 +1,5 @@
 class_name npc 
-extends Character
+extends BaseCharacter
 
 func get_input_direction() -> Vector2:
 	var dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
