@@ -1,13 +1,64 @@
 [gd_scene format=4 uid="uid://ddoecru21qaoc"]
 
-[ext_resource type="Script" uid="uid://b2n52avs17755" path="res://scripts/Player.gd" id="1_v6fml"]
+[ext_resource type="Script" uid="uid://b4hm8jdqohgdh" path="res://scripts/player.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://yqplskulu3" path="res://assets/Character/Ch36_nonPBR_0.png" id="2_70d11"]
 [ext_resource type="Texture2D" uid="uid://c8xhcds3jbh1r" path="res://assets/Character/Ch36_nonPBR_3.png" id="3_cw2d6"]
 [ext_resource type="Animation" uid="uid://bgt6apjxiigbm" path="res://assets/Character/animationResFiles/idle.res" id="4_khinc"]
 [ext_resource type="Animation" uid="uid://byp2dtng2ombw" path="res://assets/Character/animationResFiles/running.res" id="5_bruh7"]
 [ext_resource type="Animation" uid="uid://dbx2qygtdxcun" path="res://assets/Character/animationResFiles/walking.res" id="6_6eyey"]
-[ext_resource type="Animation" uid="uid://bafl1i4vvxxs3" path="res://assets/Character/animationResFiles/Tpose.res" id="7_cw2d6"]
+[ext_resource type="Animation" uid="uid://tdttgwbvxgyw" path="res://assets/Character/animationResFiles/Tpose.res" id="7_cw2d6"]
+[ext_resource type="AnimationLibrary" uid="uid://cgdok5nvs0pnh" path="res://assets/Character/Pro Sword and Shield Pack/draw sword 1.fbx" id="8_7yj0e"]
 [ext_resource type="Script" uid="uid://bmyt0a3ldm0fv" path="res://scripts/AnimationHandler.gd" id="8_khinc"]
+[ext_resource type="AnimationLibrary" uid="uid://oo0tqslypr5m" path="res://assets/Character/Pro Sword and Shield Pack/draw sword 2.fbx" id="9_c0jld"]
+[ext_resource type="AnimationLibrary" uid="uid://brengv6gn6c2q" path="res://assets/Character/Pro Sword and Shield Pack/sheath sword 1.fbx" id="10_mdclj"]
+[ext_resource type="AnimationLibrary" uid="uid://cpnxaa44rc7rp" path="res://assets/Character/Pro Sword and Shield Pack/sheath sword 2.fbx" id="11_ml80s"]
+[ext_resource type="AnimationLibrary" uid="uid://c31oli6fk584x" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield 180 turn.fbx" id="12_vdgyb"]
+[ext_resource type="AnimationLibrary" uid="uid://c130hmsxffqsc" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield 180 turn (2).fbx" id="13_jvyme"]
+[ext_resource type="AnimationLibrary" uid="uid://3keykrjlk1fu" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield attack.fbx" id="14_swrsk"]
+[ext_resource type="AnimationLibrary" uid="uid://b7v7g4uoa0yn2" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield attack (2).fbx" id="15_pkfac"]
+[ext_resource type="AnimationLibrary" uid="uid://ce6i3bi3ggw" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield attack (3).fbx" id="16_unhkg"]
+[ext_resource type="AnimationLibrary" uid="uid://3h7h8tmaxlxd" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield attack (4).fbx" id="17_2kajp"]
+[ext_resource type="AnimationLibrary" uid="uid://dwp2gf2ujveix" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield block.fbx" id="18_ku51j"]
+[ext_resource type="AnimationLibrary" uid="uid://iyqsycpcakm4" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield block (2).fbx" id="19_la8f2"]
+[ext_resource type="AnimationLibrary" uid="uid://ksfu6lmx800e" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield block idle.fbx" id="20_oanc2"]
+[ext_resource type="AnimationLibrary" uid="uid://cpv3qa5dwrpjh" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield casting.fbx" id="21_41lfj"]
+[ext_resource type="AnimationLibrary" uid="uid://cl5pv3wwvg8ca" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield casting (2).fbx" id="22_1nh4m"]
+[ext_resource type="AnimationLibrary" uid="uid://clbnf7xfprv5x" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield crouch.fbx" id="23_2hk6f"]
+[ext_resource type="AnimationLibrary" uid="uid://3f8kisg8u65" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield crouch block.fbx" id="24_xmxrx"]
+[ext_resource type="AnimationLibrary" uid="uid://sc7fy8abhq7u" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield crouch block (2).fbx" id="25_kvw7q"]
+[ext_resource type="AnimationLibrary" uid="uid://ha8ilriuml6g" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield crouch block idle.fbx" id="26_p0eor"]
+[ext_resource type="AnimationLibrary" uid="uid://whk5c0sehlfi" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield crouch idle.fbx" id="27_nrwhh"]
+[ext_resource type="AnimationLibrary" uid="uid://dkbda00mjkq5p" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield crouching.fbx" id="28_s7djh"]
+[ext_resource type="AnimationLibrary" uid="uid://cdm6fst2bctcl" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield crouching (2).fbx" id="29_wx1s8"]
+[ext_resource type="AnimationLibrary" uid="uid://46ho5ygh622k" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield crouching (3).fbx" id="30_im07a"]
+[ext_resource type="AnimationLibrary" uid="uid://bkotm1oegerhb" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield death.fbx" id="31_dsbg5"]
+[ext_resource type="AnimationLibrary" uid="uid://cefmy1yfvyegx" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield death (2).fbx" id="32_uobdy"]
+[ext_resource type="AnimationLibrary" uid="uid://b7yadmcg01w5u" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield idle.fbx" id="33_iv1vf"]
+[ext_resource type="AnimationLibrary" uid="uid://d00ttw0a2vxsw" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield idle (2).fbx" id="34_2viqe"]
+[ext_resource type="AnimationLibrary" uid="uid://mdix3q8iib5a" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield idle (3).fbx" id="35_rjt17"]
+[ext_resource type="AnimationLibrary" uid="uid://da0b1eiqi4tuo" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield idle (4).fbx" id="36_27epi"]
+[ext_resource type="AnimationLibrary" uid="uid://47e2gu8cxior" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield impact.fbx" id="37_84ti5"]
+[ext_resource type="AnimationLibrary" uid="uid://dn0jimts6qb7e" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield impact (2).fbx" id="38_afj6a"]
+[ext_resource type="AnimationLibrary" uid="uid://hc4ucerwgi64" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield impact (3).fbx" id="39_cji5y"]
+[ext_resource type="AnimationLibrary" uid="uid://ch7xxqfor7jy6" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield jump.fbx" id="40_blnfk"]
+[ext_resource type="AnimationLibrary" uid="uid://dav3lkkmb7lna" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield jump (2).fbx" id="41_qabq5"]
+[ext_resource type="AnimationLibrary" uid="uid://bm54872jhnjhh" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield kick.fbx" id="42_bqny8"]
+[ext_resource type="AnimationLibrary" uid="uid://7ab1vq4wnvbh" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield power up.fbx" id="43_mgg3w"]
+[ext_resource type="AnimationLibrary" uid="uid://cxid3m3g72jvn" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield run.fbx" id="44_kpppk"]
+[ext_resource type="AnimationLibrary" uid="uid://0tdunmya4lg5" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield run (2).fbx" id="45_sm57i"]
+[ext_resource type="AnimationLibrary" uid="uid://ctks54biyqstw" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield slash.fbx" id="46_xdlf2"]
+[ext_resource type="AnimationLibrary" uid="uid://dr5gevw6vw5ik" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield slash (2).fbx" id="47_e2ifm"]
+[ext_resource type="AnimationLibrary" uid="uid://3d1iott8h8qk" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield slash (3).fbx" id="48_1vqve"]
+[ext_resource type="AnimationLibrary" uid="uid://8gktv21houx4" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield slash (4).fbx" id="49_xfjxt"]
+[ext_resource type="AnimationLibrary" uid="uid://fj6ox36ncigc" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield slash (5).fbx" id="50_i5kac"]
+[ext_resource type="AnimationLibrary" uid="uid://cjlkwejtlyw1y" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield strafe.fbx" id="51_qycqj"]
+[ext_resource type="AnimationLibrary" uid="uid://cupl3o4weirbk" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield strafe (2).fbx" id="52_24r77"]
+[ext_resource type="AnimationLibrary" uid="uid://ciejnfvpiebbe" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield strafe (3).fbx" id="53_07ay5"]
+[ext_resource type="AnimationLibrary" uid="uid://drm8oka1dedjw" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield strafe (4).fbx" id="54_onyu1"]
+[ext_resource type="AnimationLibrary" uid="uid://kd5br15du38k" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield turn.fbx" id="55_2cdbf"]
+[ext_resource type="AnimationLibrary" uid="uid://dm8browepvoiq" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield turn (2).fbx" id="56_ksomn"]
+[ext_resource type="AnimationLibrary" uid="uid://bbd6yvco32ih" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield walk.fbx" id="57_we1n3"]
+[ext_resource type="AnimationLibrary" uid="uid://dmgmp5xkega88" path="res://assets/Character/Pro Sword and Shield Pack/sword and shield walk (2).fbx" id="58_1lbfo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iu71k"]
 resource_name = "Ch36_Body"
@@ -1589,6 +1640,8 @@ _data = {
 &"Walking": ExtResource("6_6eyey")
 }
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53r4w"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o4126"]
 animation = &"Idle"
 
@@ -1636,6 +1689,7 @@ animation = &"Walking"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ebwui"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_p7iby"]
+graph_offset = Vector2(301.21442, 100.8997)
 nodes/output/position = Vector2(1920, 80)
 nodes/BlendSpace1DMovement/node = SubResource("AnimationNodeBlendSpace1D_0rnld")
 nodes/BlendSpace1DMovement/position = Vector2(720, 80)
@@ -1687,7 +1741,7 @@ bones/0/name = "mixamorig1_Hips"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2888183e-07, 0.99754, 0.030078819)
 bones/0/enabled = true
-bones/0/position = Vector3(-2.2888183e-07, 0.99754, 0.030078819)
+bones/0/position = Vector3(-0.0003128141, 0.904044, 0.008560684)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "mixamorig1_Spine"
@@ -2144,7 +2198,7 @@ mesh = SubResource("ArrayMesh_2rekx")
 skin = SubResource("Skin_4icsj")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="CharacterVisual/Skeleton3D" unique_id=2119746230]
-transform = Transform3D(0.17789604, 0.103106335, -0.97862816, -0.2265041, -0.96350884, -0.14268404, -0.95762444, 0.24704766, -0.14805013, 0.26391247, 0.95587325, 0.04556802)
+transform = Transform3D(0.17789604, 0.103106335, -0.97862816, -0.2265041, -0.96350884, -0.14268404, -0.95762444, 0.24704766, -0.14805013, 0.26359987, 0.86237717, 0.024049884)
 bone_name = "mixamorig1_LeftHand"
 bone_idx = 10
 
@@ -2157,6 +2211,58 @@ debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterVisual" unique_id=504613724]
 libraries/ = SubResource("AnimationLibrary_d3wef")
+libraries/UpdatedVisual = SubResource("AnimationLibrary_53r4w")
+"libraries/draw sword 1" = ExtResource("8_7yj0e")
+"libraries/draw sword 2" = ExtResource("9_c0jld")
+"libraries/sheath sword 1" = ExtResource("10_mdclj")
+"libraries/sheath sword 2" = ExtResource("11_ml80s")
+"libraries/sword and shield 180 turn" = ExtResource("12_vdgyb")
+"libraries/sword and shield 180 turn (2)" = ExtResource("13_jvyme")
+"libraries/sword and shield attack" = ExtResource("14_swrsk")
+"libraries/sword and shield attack (2)" = ExtResource("15_pkfac")
+"libraries/sword and shield attack (3)" = ExtResource("16_unhkg")
+"libraries/sword and shield attack (4)" = ExtResource("17_2kajp")
+"libraries/sword and shield block" = ExtResource("18_ku51j")
+"libraries/sword and shield block (2)" = ExtResource("19_la8f2")
+"libraries/sword and shield block idle" = ExtResource("20_oanc2")
+"libraries/sword and shield casting" = ExtResource("21_41lfj")
+"libraries/sword and shield casting (2)" = ExtResource("22_1nh4m")
+"libraries/sword and shield crouch" = ExtResource("23_2hk6f")
+"libraries/sword and shield crouch block" = ExtResource("24_xmxrx")
+"libraries/sword and shield crouch block (2)" = ExtResource("25_kvw7q")
+"libraries/sword and shield crouch block idle" = ExtResource("26_p0eor")
+"libraries/sword and shield crouch idle" = ExtResource("27_nrwhh")
+"libraries/sword and shield crouching" = ExtResource("28_s7djh")
+"libraries/sword and shield crouching (2)" = ExtResource("29_wx1s8")
+"libraries/sword and shield crouching (3)" = ExtResource("30_im07a")
+"libraries/sword and shield death" = ExtResource("31_dsbg5")
+"libraries/sword and shield death (2)" = ExtResource("32_uobdy")
+"libraries/sword and shield idle" = ExtResource("33_iv1vf")
+"libraries/sword and shield idle (2)" = ExtResource("34_2viqe")
+"libraries/sword and shield idle (3)" = ExtResource("35_rjt17")
+"libraries/sword and shield idle (4)" = ExtResource("36_27epi")
+"libraries/sword and shield impact" = ExtResource("37_84ti5")
+"libraries/sword and shield impact (2)" = ExtResource("38_afj6a")
+"libraries/sword and shield impact (3)" = ExtResource("39_cji5y")
+"libraries/sword and shield jump" = ExtResource("40_blnfk")
+"libraries/sword and shield jump (2)" = ExtResource("41_qabq5")
+"libraries/sword and shield kick" = ExtResource("42_bqny8")
+"libraries/sword and shield power up" = ExtResource("43_mgg3w")
+"libraries/sword and shield run" = ExtResource("44_kpppk")
+"libraries/sword and shield run (2)" = ExtResource("45_sm57i")
+"libraries/sword and shield slash" = ExtResource("46_xdlf2")
+"libraries/sword and shield slash (2)" = ExtResource("47_e2ifm")
+"libraries/sword and shield slash (3)" = ExtResource("48_1vqve")
+"libraries/sword and shield slash (4)" = ExtResource("49_xfjxt")
+"libraries/sword and shield slash (5)" = ExtResource("50_i5kac")
+"libraries/sword and shield strafe" = ExtResource("51_qycqj")
+"libraries/sword and shield strafe (2)" = ExtResource("52_24r77")
+"libraries/sword and shield strafe (3)" = ExtResource("53_07ay5")
+"libraries/sword and shield strafe (4)" = ExtResource("54_onyu1")
+"libraries/sword and shield turn" = ExtResource("55_2cdbf")
+"libraries/sword and shield turn (2)" = ExtResource("56_ksomn")
+"libraries/sword and shield walk" = ExtResource("57_we1n3")
+"libraries/sword and shield walk (2)" = ExtResource("58_1lbfo")
 autoplay = &"Idle"
 
 [node name="AnimationTree" type="AnimationTree" parent="CharacterVisual" unique_id=914528323]
