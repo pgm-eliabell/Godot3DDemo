@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assets/third_person_controller_assets-main/textures/grids/Dark/texture_05.png" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://ddoecru21qaoc" path="res://scenes/Player.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://byir3quk8wn" path="res://scenes/chest.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://cnq1iv0oxyg86" path="res://scenes/Building/wall.tscn" id="3_trceg"]
+[ext_resource type="PackedScene" uid="uid://v5jq38x37po1" path="res://scenes/Building/wall.tscn" id="3_trceg"]
 [ext_resource type="PackedScene" uid="uid://cf5ll7yyiwv36" path="res://scenes/barrel.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dhdwfp5liii1d" path="res://scenes/Building/WallDoorway.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dvxxgjwt64qxd" path="res://scenes/Building/WallTSplit.tscn" id="6_eb6dy"]
@@ -667,7 +667,7 @@ material_override = SubResource("StandardMaterial3D_sugp2")
 size = Vector3(2, 2, 1)
 
 [node name="Player" parent="." unique_id=1488730104 instance=ExtResource("2_0wfyh")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 102, 0.5, -53)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 113.9, -2.2351742e-08, -54.7)
 
 [node name="TestAttributes" type="Node3D" parent="." unique_id=2041316953]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0.39999998, 36)

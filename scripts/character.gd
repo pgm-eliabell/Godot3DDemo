@@ -17,7 +17,7 @@ var walking_speed = 3
 var running_speed = 6
 
 func _ready():
-	attack_area_3d.body_entered.connect(_on_attack_body_entered)
+	#attack_area_3d.body_entered.connect(_on_attack_body_entered)
 	label_3d.text = "HP: " + str(HP) 
 	#print("current characters affected: ", self.name )
 	#print(label_3d.text)

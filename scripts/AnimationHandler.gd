@@ -25,6 +25,7 @@ func _get_animation_length_or_fallback(animation_name: StringName, fallback: flo
 	push_warning("Animation '%s' was not found on AnimationPlayer. Using fallback duration %s." % [animation_name, fallback])
 	return fallback
 
+#if block or an attack has been done, default to idle
 func _physics_process(delta):
 	if attack_timer > 0 and current_animation == ATTACK:
 		#print("attack timer psyhyc triggered:", attack_timer)
