@@ -1,7 +1,10 @@
 extends Node
 
-@onready var animation_tree: AnimationTree = $"../AnimationTree"
-@onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
+#@onready var animation_tree: AnimationTree = $AnimationTree
+#@onready var animation_player: AnimationPlayer = $CharacterBasev15/AnimationPlayer
+
+@export var animation_tree: AnimationTree
+@export var animation_player: AnimationPlayer
 
 enum {IDLE, WALK, RUN, ATTACK, BLOCK}
 var current_animation = IDLE
@@ -67,6 +70,6 @@ func set_animation_state(state: int, speed = 0.0, max_speed = 6.0):
 		animation_tree.active = true
 		var blendValue = clamp(speed / max_speed, 0.0, 1.0)
 		#print(blendValue)
-		animation_tree["parameters/BlendSpace1DMovement/blend_position"] = blendValue
+		animation_tree["parameters/BlendSpace1D/blend_position"] = blendValue
 	else:
 		current_animation = state

@@ -20,7 +20,7 @@ func get_input_direction() -> Vector2:
 	return Input.get_vector("left", "right", "forward", "backward") 
 
 func wants_to_attack() -> bool:
-	return Input.is_action_just_pressed("attack")
+		return Input.is_action_just_pressed("attack")
 
 func wants_to_block() -> bool:
 	return Input.is_action_just_pressed("block") 

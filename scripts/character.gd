@@ -1,9 +1,10 @@
 class_name BaseCharacter
 extends CharacterBody3D
 
-@onready var attack_area_3d: Area3D = $CharacterVisual/Skeleton3D/BoneAttachment3D/Area3D
-@onready var character_visual: Node3D = $CharacterVisual
-@onready var debug_arrow: MeshInstance3D = $Debug_Arrow
+#@onready var attack_area_3d: Area3D = $CharacterVisual/Skeleton3D/BoneAttachment3D/Area3D
+
+@onready var character_visual: Node3D = $CharacterVisual #good 
+@onready var debug_arrow: MeshInstance3D = $Debug_Arrow #good 
 @onready var animation_handler: Node3D = $CharacterVisual/AnimationHandler
 @onready var label_3d: Label3D = $Node3D/Label3D
 
@@ -81,7 +82,6 @@ func get_input_direction() -> Vector2:
 	return Vector2.ZERO
 		
 func wants_to_attack() -> bool:
-		
 	return false
 		
 func wants_to_block() -> bool:
