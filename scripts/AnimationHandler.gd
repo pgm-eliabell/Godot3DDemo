@@ -15,10 +15,11 @@ var run_val = 0.0
 
 var attack_timer = 0.0
 var block_timer = 0.0
-@export var attack_duration = 1.5
-@export var block_duration = 1.0
-@export var attack_animation_name: StringName = &"Attack"
-@export var block_animation_name: StringName = &"BlockStance"
+#@export var attack_duration = 1.5
+#@export var block_duration = 1.0
+
+#@export var attack_animation_name: StringName = &"Attack"
+#@export var block_animation_name: StringName = &"BlockStance"
 
 func _get_animation_length_or_fallback(animation_name: StringName, fallback: float) -> float:
 	var anim := animation_player.get_animation(animation_name)
@@ -35,12 +36,12 @@ func _physics_process(delta):
 		attack_timer -= delta
 		if attack_timer <= 0:
 			current_animation = IDLE
-			animation_tree["parameters/BlendSpace1DMovement/blend_position"] = 0.0
+			animation_tree["parameters/BlendSpace2D/blend_position"] = 0.0
 	if block_timer > 0 and current_animation == BLOCK:
 		block_timer -= delta
 		if block_timer <= 0:
 			current_animation = IDLE
-			animation_tree["parameters/BlendSpace1DMovement/blend_position"] = 0.0
+			animation_tree["parameters/BlendSpace2D/blend_position"] = 0.0
 
 	#handle_animation(delta)
 	#update_tree()
@@ -51,19 +52,27 @@ func is_in_state(state: int) -> bool:
 	# this will return 0,1,2,3,4 respectively, these are the indexes of the enum states defined at the top {idle, walk, run, attack, block} etc. 
 	return current_animation == state
 
-func set_animation_state(state: int, speed = 0.0, max_speed = 6.0):
+func set_animation_state(state: int, attack_dir = Vector2.ZERO, speed = 0.0, max_speed = 6.0):
 	if state == ATTACK:
 		current_animation = ATTACK 
-		#var attack_timer2 = animation_player.current_animation_length
-		#var currentTestAnim = animation_player.current_animation
-		#print("this is the current running animation", currentTestAnim)
-		#print("attack_timer2:", attack_timer2)
-		attack_timer = _get_animation_length_or_fallback(attack_animation_name, attack_duration)
-		#print("attack_timer1:", attack_timer)
-		animation_tree["parameters/oneshotAttack/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		# 1. choose which animation is being used based on direction
+		var anim_name = ""
+		if attack_dir.x > 0: anim_name = "AttackRight"
+		elif attack_dir.x < 0: anim_name = "AttackLeft"
+		elif attack_dir.y < 0: anim_name = "AttackUp"
+		else: anim_name = "AttackDown"
+		
+		# 2. get the lenght of a certain animation
+		attack_timer = _get_animation_length_or_fallback(anim_name, 1.5)
+		
+		# 3. play the animation 
+		print("anim_name: ", anim_name, "attack_timer: ", attack_timer )
+		animation_tree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		#print("this is the attackdir inside of animationHandler:", attack_dir)
+		animation_tree["parameters/BlendSpace2D/blend_position"] = attack_dir
 	elif state == BLOCK:
 		current_animation = BLOCK
-		block_timer = _get_animation_length_or_fallback(block_animation_name, block_duration)
+		#block_timer = _get_animation_length_or_fallback(block_animation_name, block_duration)
 		animation_tree["parameters/oneshotBlock/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	elif state == WALK or state == RUN or state == IDLE:
 		current_animation = state

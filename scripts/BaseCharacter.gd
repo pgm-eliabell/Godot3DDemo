@@ -7,6 +7,15 @@ extends CharacterBody3D
 @onready var debug_arrow: MeshInstance3D = $Debug_Arrow #good 
 @onready var animation_handler: Node3D = $CharacterVisual/AnimationHandler
 @onready var label_3d: Label3D = $Node3D/Label3D
+@onready var center_direction: MeshInstance3D = $CenterDirection
+@onready var arrow_left: MeshInstance3D = $CenterDirection/ArrowLeft
+@onready var arrow_right: MeshInstance3D = $CenterDirection/ArrowRight
+@onready var arrow_up: MeshInstance3D = $CenterDirection/ArrowUp
+@onready var arrow_down: MeshInstance3D = $CenterDirection/ArrowDown
+
+
+var last_attack_dir: Vector2 = Vector2.ZERO
+var DIRECTION_THRESHOLD = 2.0
 
 
 var SPEED = 3
@@ -22,6 +31,7 @@ func _ready():
 	label_3d.text = "HP: " + str(HP) 
 	#print("current characters affected: ", self.name )
 	#print(label_3d.text)
+	
 	
 func _physics_process(delta):
 	if Input.is_action_pressed("shift"):
@@ -39,8 +49,10 @@ func _physics_process(delta):
 
 	# If attack is triggered and not currently active, call the animationHandler Node. 
 	if wants_to_attack() and not animation_handler.is_in_state(animation_handler.ATTACK):
-		animation_handler.call("set_animation_state", animation_handler.ATTACK)
-		#print("current state attack: ", animation_handler.current_animation)
+		print("wants to attack")
+		animation_handler.call("set_animation_state", animation_handler.ATTACK, last_attack_dir)
+		#print("current state attack: ", animation_handler.current_animation, "get_last_cursor_direction: ", get_last_cursor_direction())
+		print("value sent -> animationhandler: ", get_last_cursor_direction())
 	elif wants_to_block() and not animation_handler.is_in_state(animation_handler.BLOCK):
 		animation_handler.call("set_animation_state", animation_handler.BLOCK)
 
@@ -77,6 +89,19 @@ func _physics_process(delta):
 			animation_handler.call("set_animation_state", animation_handler.IDLE, 0)
 			
 	move_and_slide()
+	var attack_dir = get_last_cursor_direction()
+	#print("this is the debugdirection: ", attack_dir)
+	DEBUG_give_attack_direction(attack_dir)
+
+func update_attack_direction(input_delta: Vector2):
+	if input_delta.length() > DIRECTION_THRESHOLD:
+		if abs(input_delta.x) > abs(input_delta.y):
+			last_attack_dir = Vector2(sign(input_delta.x), 0)
+		else:
+			last_attack_dir = Vector2(0, -sign(input_delta.y))
+
+func get_last_cursor_direction() -> Vector2:
+	return last_attack_dir
 
 func get_input_direction() -> Vector2:
 	return Vector2.ZERO
@@ -106,3 +131,36 @@ func _on_attack_body_entered(body):
 	body.take_damage(10)
 	
 	
+	
+#func get_last_cursor_direction(): 
+	## Screen center is where the screen center is, for a 1920x1080 this should always be (960, 540)
+	#var screen_center = get_viewport().get_visible_rect().size / 2
+	## position of the mouse, this should be the same as the screen center. Unless the mouse is set free.
+	#var mouse_pos = get_viewport().get_mouse_position()
+	## then this offset is always 0? other then some small diffrences, which COULD be used for direction.
+	#var offset = mouse_pos - screen_center
+	##normalize to -1/1 range 
+	##print("screen_center: ", screen_center, "mouse_pos: ", mouse_pos, "offset: ", offset, "Vector if needed: ")
+	#print("offset: ", offset)
+	##if offset 
+	#var attack_direction = Vector2(sign(offset.x), sign(offset.y))
+	#print ("is attack_direction filled?:", attack_direction)
+	#return 
+	
+	
+func set_arrow_color(mesh: MeshInstance3D, color: Color):
+	var mat = mesh.get_active_material(0)
+	if mat == null:
+		mat = StandardMaterial3D.new()
+		mesh.set_surface_override_material(0, mat)
+	mat.albedo_color = color
+
+func DEBUG_give_attack_direction(dir: Vector2):
+	var default_color = Color(1, 1, 1)
+	for arrow in [arrow_left, arrow_right, arrow_up, arrow_down]:
+		set_arrow_color(arrow, default_color)
+
+	if dir.x > 0: set_arrow_color(arrow_right, Color(1, 0, 0))
+	elif dir.x < 0: set_arrow_color(arrow_left, Color(1, 0, 0))
+	elif dir.y > 0: set_arrow_color(arrow_down, Color(1, 0, 0))
+	elif dir.y < 0: set_arrow_color(arrow_up, Color(1, 0, 0))

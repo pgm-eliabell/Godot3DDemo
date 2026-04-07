@@ -31,6 +31,8 @@ height = 0.1
 
 [node name="Player" type="CharacterBody3D" unique_id=942084250]
 script = ExtResource("1_v6fml")
+sens_horizontal = null
+sens_vertical = null
 
 [node name="CharacterVisual" type="Node3D" parent="." unique_id=610385612]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
@@ -44,12 +46,12 @@ animation_player = NodePath("CharacterBlender/CharacterBasev15/AnimationPlayer")
 transform = Transform3D(-2.0981465e-08, 0, -0.48, 0, 0.48, 0, 0.48, 0, -2.0981465e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="CharacterVisual/AnimationHandler/CharacterBlender/CharacterBasev15/Armature" parent_id_path=PackedInt32Array(1612516003, 1826952782, 798696930) index="0" unique_id=1868138576]
-bones/0/position = Vector3(0.0029003236, -0.2663661, -1.9381797e-12)
-bones/1/rotation = Quaternion(-0.014299414, 0.004512851, 0.01785739, 0.9997282)
-bones/6/rotation = Quaternion(0.025416046, 0.59494483, -0.80187476, 0.04890515)
-bones/10/rotation = Quaternion(-0.051882587, 0.59268624, 0.80276996, 0.039895598)
-bones/14/position = Vector3(-0.0014577402, -0.2663779, 2.696325e-05)
-bones/18/position = Vector3(-0.013146318, -0.26605734, -2.6975142e-05)
+bones/0/position = Vector3(0.0029365518, -0.2696933, -1.9623936e-12)
+bones/1/rotation = Quaternion(-0.026528845, 0.008372405, 0.037788987, 0.9988985)
+bones/6/rotation = Quaternion(0.049941532, 0.5922246, -0.7993772, 0.08815894)
+bones/10/rotation = Quaternion(-0.086932346, 0.57928115, 0.8031989, 0.10838758)
+bones/14/position = Vector3(-0.0014759483, -0.26970518, 2.7310933e-05)
+bones/18/position = Vector3(-0.013310526, -0.2693806, -2.7309281e-05)
 
 [node name="AnimationTree" parent="CharacterVisual/AnimationHandler/CharacterBlender" index="1" unique_id=1406082668]
 parameters/BlendSpace2D/blend_position = Vector2(-0.0027297735, 0)

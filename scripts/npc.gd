@@ -1,4 +1,4 @@
-class_name npc 
+class_name npc
 extends BaseCharacter
 
 func get_input_direction() -> Vector2:
