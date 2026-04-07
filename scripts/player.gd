@@ -1,40 +1,65 @@
 class_name player
 extends BaseCharacter
 
-@onready var camera_mount: Node3D = $Camera_Mount
-#@export var last_look_offset: Vector2 = Vector2.ZERO
+# 1. De Nodes (Zorg dat deze namen exact kloppen met je Scene Tree!)
+@onready var camera_pitch: Node3D = $Camera_Mount/CameraPitch
+@onready var camera_free: Camera3D = $Camera_Mount/CameraPitch/Camera3D # De camera in de Pitch node
+@onready var camera_locked: Camera3D = $Camera_Mount/Camera3DLocked # Je nieuwe locked camera
+
+@onready var camera_mount_free: Node3D = $Camera_Mount
+
 @export var sens_horizontal = 0.2
 @export var sens_vertical = 0.2
 
 func _ready():
-	super._ready() # this is needed because character.gd has its own _ready, and if it does, it doesnt run the one of the children anymore.
+	super._ready()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# Start met de locked camera
+	camera_locked.make_current()
 
 func _input(event):
-	if event is InputEventMouseMotion:
-		# 1. Camera rotatie
-		rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
-		character_visual.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
-		camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
+	# Camera Lock Wisselen
+	if Input.is_action_just_pressed("camera_lock"):
+		print("camera has been locked/unlocked")
+		is_camera_locked = !is_camera_locked
 		
-		# 2. Geef de muisbeweging door aan de logica in BaseCharacter
+		if is_camera_locked:
+			camera_locked.make_current()
+			# Reset alles naar voren
+			character_visual.rotation.y = 0
+			camera_mount_free.rotation.y = 0
+			camera_pitch.rotation.x = 0
+		else:
+			camera_free.make_current()
+			# Optioneel: draai visual om als je model verkeerd om staat
+			# character_visual.rotation.y = deg_to_rad(180) 
+
+	# Muisbeweging
+	if event is InputEventMouseMotion:	
+		if is_camera_locked:
+			# 1. Horizontaal: Draai het hele lichaam
+			rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
+			# 2. Verticaal: Draai de locked camera omhoog/omlaag
+			camera_locked.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
+			camera_locked.rotation.x = clamp(camera_locked.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+		else:
+			# 1. Horizontaal: Draai alleen de mount (lichaam blijft staan)
+			camera_mount_free.rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
+			# 2. Verticaal: Draai de pitch node voor de free-camera
+			camera_pitch.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
+			camera_pitch.rotation.x = clamp(camera_pitch.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+		
+		# Update aanvalsrichting (pijlen)
 		update_attack_direction(event.relative)
 
 func get_input_direction() -> Vector2:
 	return Input.get_vector("left", "right", "forward", "backward") 
 
 func wants_to_attack() -> bool:
-		return Input.is_action_just_pressed("attack")
+	return Input.is_action_just_pressed("attack")
 
 func wants_to_block() -> bool:
 	return Input.is_action_just_pressed("block") 
 
 func wants_to_jump() -> bool:
 	return Input.is_action_just_pressed("jump")
-
-#func get_cursor_direction(): 
-	#var screen_center = get_viewport().get_visible_rect().size / 2
-	#var mouse_pos = get_viewport().get_mouse_position()
-	#var offset = mouse_pos - screen_center
-	##normalize to -1/1 range 
-	#return Vector2(sign(offset.x), sign(offset.y))

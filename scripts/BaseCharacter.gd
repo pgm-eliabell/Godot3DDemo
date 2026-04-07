@@ -13,7 +13,7 @@ extends CharacterBody3D
 @onready var arrow_up: MeshInstance3D = $CenterDirection/ArrowUp
 @onready var arrow_down: MeshInstance3D = $CenterDirection/ArrowDown
 
-
+var is_camera_locked : bool = true # locks the character based on the boolean, default locked
 var last_attack_dir: Vector2 = Vector2.ZERO
 var DIRECTION_THRESHOLD = 2.0
 
@@ -69,7 +69,15 @@ func _physics_process(delta):
 	
 	if not is_attacking and not is_blocking:
 		if has_input:
-			character_visual.look_at(global_position - direction, Vector3.UP)
+			if is_camera_locked:
+				character_visual.rotation.y = lerp_angle(character_visual.rotation.y, deg_to_rad(180) , delta * 10)
+			else:
+				# Gebruik een lerp voor vloeibare rotatie naar de looprichting
+				var target_dir = global_position - direction
+				var look_target = character_visual.global_position.direction_to(target_dir)
+				if look_target != Vector3.ZERO:
+					character_visual.look_at(target_dir, Vector3.UP)
+					
 			debug_arrow.look_at(global_position + direction, Vector3.UP)
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED

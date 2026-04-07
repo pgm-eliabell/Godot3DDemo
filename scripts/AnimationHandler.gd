@@ -10,6 +10,7 @@ enum {IDLE, WALK, RUN, ATTACK, BLOCK}
 var current_animation = IDLE
 @export var blend_speed = 15
 
+
 var walk_val = 0.0
 var run_val = 0.0
 
