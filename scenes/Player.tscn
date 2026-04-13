@@ -44,12 +44,12 @@ animation_player = NodePath("CharacterBlender/CharacterBasev15/AnimationPlayer")
 transform = Transform3D(-2.0981465e-08, 0, -0.48, 0, 0.48, 0, 0.48, 0, -2.0981465e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="CharacterVisual/AnimationHandler/CharacterBlender/CharacterBasev15/Armature" parent_id_path=PackedInt32Array(1612516003, 1826952782, 798696930) index="0" unique_id=1868138576]
-bones/0/position = Vector3(0.002869655, -0.2635495, -1.9176824e-12)
-bones/1/rotation = Quaternion(-0.0032877547, 0.0013259512, -0.013052642, 0.9999086)
-bones/6/rotation = Quaternion(-0.003236835, 0.5964963, -0.8026037, 0.0030229583)
-bones/10/rotation = Quaternion(0.012935483, 0.58796334, 0.8075409, -0.04483013)
-bones/14/position = Vector3(-0.0014423255, -0.2635611, 2.6675225e-05)
-bones/18/position = Vector3(-0.013007302, -0.26324394, -2.6669337e-05)
+bones/0/position = Vector3(0.0029479545, -0.27074054, -1.970014e-12)
+bones/1/rotation = Quaternion(-0.027116835, 0.008560164, 0.038592122, 0.99885046)
+bones/6/rotation = Quaternion(0.0512542, 0.59204257, -0.7991946, 0.090259396)
+bones/10/rotation = Quaternion(-0.08894024, 0.5762998, 0.804582, 0.11232116)
+bones/14/position = Vector3(-0.0014816794, -0.27075246, 2.7407195e-05)
+bones/18/position = Vector3(-0.013362211, -0.2704266, -2.7405526e-05)
 
 [node name="AnimationTree" parent="CharacterVisual/AnimationHandler/CharacterBlender" index="1" unique_id=1406082668]
 parameters/BlendSpace2D/blend_position = Vector2(-0.0027297735, 0)

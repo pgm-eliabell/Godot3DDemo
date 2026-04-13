@@ -46,7 +46,7 @@ blend_point_3/pos = Vector2(0, -1)
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_61ith"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nccel"]
-graph_offset = Vector2(14.677734, 57.5291)
+graph_offset = Vector2(-180.7027, 21.063232)
 nodes/output/position = Vector2(1920, 80)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_61ith")
 nodes/OneShot/position = Vector2(1320, 80)
@@ -63,21 +63,21 @@ node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"BlendSpace1D", &"
 [node name="CharacterBasev15" parent="." unique_id=1826952782 instance=ExtResource("1_j5c2r")]
 
 [node name="Skeleton3D" parent="CharacterBasev15/Armature" parent_id_path=PackedInt32Array(1826952782, 798696930) index="0" unique_id=1868138576]
-bones/0/position = Vector3(0.0029858337, -0.27421936, -1.9953269e-12)
-bones/1/rotation = Quaternion(-0.02642154, 0.008481225, 0.02762737, 0.9992331)
+bones/0/position = Vector3(0.0028726563, -0.26382515, -1.9196884e-12)
+bones/1/rotation = Quaternion(-0.0027225658, 0.0011006714, -0.011816271, 0.9999259)
 bones/4/rotation = Quaternion(-1.0755295e-16, -3.1416703e-26, -1.3282274e-17, 1)
-bones/6/rotation = Quaternion(0.042808853, 0.5931489, -0.8002826, 0.0767447)
+bones/6/rotation = Quaternion(-0.003244339, 0.5964964, -0.8026036, 0.003010939)
 bones/7/rotation = Quaternion(-1.8626451e-08, -3.1551124e-08, 5.529702e-10, 1)
 bones/8/rotation = Quaternion(-3.7252903e-09, 4.246603e-15, -2.1763219e-16, 1)
-bones/10/rotation = Quaternion(-0.06786745, 0.5693558, 0.81315875, 0.10000493)
+bones/10/rotation = Quaternion(0.008973338, 0.5893537, 0.8066231, -0.044056688)
 bones/11/rotation = Quaternion(-1.8408175e-08, -5.768379e-08, -5.264376e-10, 1)
 bones/12/rotation = Quaternion(2.0372704e-10, -1.7462265e-09, 4.65672e-10, 1)
-bones/14/position = Vector3(-0.0015007183, -0.27423146, 2.7748532e-05)
+bones/14/position = Vector3(-0.001443834, -0.26383677, 2.6701791e-05)
 bones/14/rotation = Quaternion(0.8942289, -0.0061262376, -0.006126238, -0.44752625)
 bones/15/rotation = Quaternion(-0.42842656, 0.019201549, -0.04592427, 0.9022045)
 bones/16/rotation = Quaternion(-0.020957084, -0.024679855, 0.029468875, 0.9990412)
 bones/17/rotation = Quaternion(0.48347464, 0.62255627, 0.38218448, -0.48229775)
-bones/18/position = Vector3(-0.013533909, -0.27390146, -2.7770076e-05)
+bones/18/position = Vector3(-0.013020906, -0.26351926, -2.6697468e-05)
 bones/19/rotation = Quaternion(0.42830014, 0.027826369, -0.047090795, 0.90197957)
 bones/20/rotation = Quaternion(0.02022285, 2.7502992e-08, 0.02997745, 0.9993461)
 bones/21/rotation = Quaternion(0.37743187, 0.4883709, -0.48719382, 0.6178035)
@@ -93,6 +93,6 @@ parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
 parameters/BlendSpace1D/blend_position = 0.0
-parameters/BlendSpace2D/blend_position = Vector2(-0.001, 1)
+parameters/BlendSpace2D/blend_position = Vector2(0, 0)
 
 [editable path="CharacterBasev15"]

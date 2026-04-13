@@ -50,11 +50,11 @@ func _physics_process(delta):
 	# If attack is triggered and not currently active, call the animationHandler Node. 
 	if wants_to_attack() and not animation_handler.is_in_state(animation_handler.ATTACK):
 		print("wants to attack")
-		animation_handler.call("set_animation_state", animation_handler.ATTACK, last_attack_dir)
+		animation_handler.call("set_animation_state", animation_handler.ATTACK, 0, 6.0, last_attack_dir)
 		#print("current state attack: ", animation_handler.current_animation, "get_last_cursor_direction: ", get_last_cursor_direction())
 		print("value sent -> animationhandler: ", get_last_cursor_direction())
 	elif wants_to_block() and not animation_handler.is_in_state(animation_handler.BLOCK):
-		animation_handler.call("set_animation_state", animation_handler.BLOCK)
+		animation_handler.call("set_animation_state", animation_handler.BLOCK, 0, 6.0, Vector2.ZERO)
 
 	# Ask the handler what state we're in, don't store it ourselves
 	var is_attacking = animation_handler.is_in_state(animation_handler.ATTACK)
@@ -85,16 +85,18 @@ func _physics_process(delta):
 			# Only horizontal speed for walk/run logic.
 			var horizontal_speed := Vector2(velocity.x, velocity.z).length()
 
-			if horizontal_speed > walking_speed + 0.01:
-				animation_handler.call("set_animation_state", animation_handler.RUN, horizontal_speed)
+			if horizontal_speed > running_speed + 0.01: # A small threshold to prevent jitter between walk/run at low speeds
+				print("running: walking_speed: ", walking_speed, "horizontal_speed: ", horizontal_speed)
+				animation_handler.call("set_animation_state", animation_handler.RUN, horizontal_speed, 6.0, Vector2.ZERO)
 				#print("current state run: ", animation_handler.current_animation)
 			else:
-				animation_handler.call("set_animation_state", animation_handler.WALK, horizontal_speed)
+				print("walking: walking_speed: ", walking_speed, "horizontal_speed: ", horizontal_speed)
+				animation_handler.call("set_animation_state", animation_handler.WALK, horizontal_speed, 6.0, Vector2.ZERO)
 				#print("current state walk: ", animation_handler.current_animation)
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, SPEED)
 			velocity.z = move_toward(velocity.z, 0.0, SPEED)
-			animation_handler.call("set_animation_state", animation_handler.IDLE, 0)
+			animation_handler.call("set_animation_state", animation_handler.IDLE, 0, 6.0, Vector2.ZERO)
 			
 	move_and_slide()
 	var attack_dir = get_last_cursor_direction()

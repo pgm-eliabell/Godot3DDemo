@@ -53,7 +53,7 @@ func is_in_state(state: int) -> bool:
 	# this will return 0,1,2,3,4 respectively, these are the indexes of the enum states defined at the top {idle, walk, run, attack, block} etc. 
 	return current_animation == state
 
-func set_animation_state(state: int, attack_dir = Vector2.ZERO, speed = 0.0, max_speed = 6.0):
+func set_animation_state(state: int, speed = 0.0, max_speed = 6.0, attack_dir = Vector2.ZERO):
 	if state == ATTACK:
 		current_animation = ATTACK 
 		# 1. choose which animation is being used based on direction
@@ -77,9 +77,11 @@ func set_animation_state(state: int, attack_dir = Vector2.ZERO, speed = 0.0, max
 		animation_tree["parameters/oneshotBlock/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	elif state == WALK or state == RUN or state == IDLE:
 		current_animation = state
+		#print(current_animation)
 		animation_tree.active = true
+		#print("speed: ",speed, "max_speed: ", max_speed)
 		var blendValue = clamp(speed / max_speed, 0.0, 1.0)
-		#print(blendValue)
+		#print("this is the blendvalue: ",blendValue)
 		animation_tree["parameters/BlendSpace1D/blend_position"] = blendValue
 	else:
 		current_animation = state
