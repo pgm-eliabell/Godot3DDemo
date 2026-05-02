@@ -3,8 +3,11 @@ extends Node
 #@onready var animation_tree: AnimationTree = $AnimationTree
 #@onready var animation_player: AnimationPlayer = $CharacterBasev15/AnimationPlayer
 
-@export var animation_tree: AnimationTree
-@export var animation_player: AnimationPlayer
+#@export var animation_tree: AnimationTree
+#@export var animation_player: AnimationPlayer
+@onready var animation_player: AnimationPlayer = $"../CharacterBlender/CharacterBasev17/AnimationPlayer"
+@onready var animation_tree: AnimationTree = $"../CharacterBlender/AnimationTree"
+
 
 enum {IDLE, WALK, RUN, ATTACK, BLOCK}
 var current_animation = IDLE
@@ -77,7 +80,8 @@ func set_animation_state(state: int, speed = 0.0, max_speed = 6.0, attack_dir = 
 		animation_tree["parameters/oneshotBlock/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	elif state == WALK or state == RUN or state == IDLE:
 		current_animation = state
-		#print(current_animation)
+		#print("is this current animation?", current_animation)
+		#print(animation_tree)
 		animation_tree.active = true
 		#print("speed: ",speed, "max_speed: ", max_speed)
 		var blendValue = clamp(speed / max_speed, 0.0, 1.0)

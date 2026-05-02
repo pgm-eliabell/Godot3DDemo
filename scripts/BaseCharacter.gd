@@ -86,11 +86,11 @@ func _physics_process(delta):
 			var horizontal_speed := Vector2(velocity.x, velocity.z).length()
 
 			if horizontal_speed > running_speed + 0.01: # A small threshold to prevent jitter between walk/run at low speeds
-				print("running: walking_speed: ", walking_speed, "horizontal_speed: ", horizontal_speed)
+				#print("running: walking_speed: ", walking_speed, "horizontal_speed: ", horizontal_speed)
 				animation_handler.call("set_animation_state", animation_handler.RUN, horizontal_speed, 6.0, Vector2.ZERO)
 				#print("current state run: ", animation_handler.current_animation)
 			else:
-				print("walking: walking_speed: ", walking_speed, "horizontal_speed: ", horizontal_speed)
+				#print("walking: walking_speed: ", walking_speed, "horizontal_speed: ", horizontal_speed)
 				animation_handler.call("set_animation_state", animation_handler.WALK, horizontal_speed, 6.0, Vector2.ZERO)
 				#print("current state walk: ", animation_handler.current_animation)
 		else:
