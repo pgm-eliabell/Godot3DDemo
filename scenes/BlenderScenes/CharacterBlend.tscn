@@ -4,6 +4,8 @@
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l352e"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nmu3n"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xq5c7"]
 animation = &"Idle"
 
@@ -45,39 +47,45 @@ blend_point_3/pos = Vector2(0, -1)
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_61ith"]
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_qymq4"]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nccel"]
-graph_offset = Vector2(-180.7027, 21.063232)
-nodes/output/position = Vector2(1920, 80)
-nodes/OneShot/node = SubResource("AnimationNodeOneShot_61ith")
-nodes/OneShot/position = Vector2(1320, 80)
+graph_offset = Vector2(613.0498, 37.133698)
+nodes/output/position = Vector2(2140, 100)
+nodes/OneShotAttack/node = SubResource("AnimationNodeOneShot_61ith")
+nodes/OneShotAttack/position = Vector2(1320, 80)
 nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_xq5c7")
 nodes/BlendSpace1D/position = Vector2(900, 80)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_l352e")
 nodes/BlendSpace2D/position = Vector2(920, 500)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_l352e")
 nodes/Animation/position = Vector2(2108.235, 491.69586)
-node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"BlendSpace1D", &"OneShot", 1, &"BlendSpace2D"]
+nodes/OneShotBlock/node = SubResource("AnimationNodeOneShot_qymq4")
+nodes/OneShotBlock/position = Vector2(1760, 80)
+nodes/AnimationBlock/node = SubResource("AnimationNodeAnimation_nmu3n")
+nodes/AnimationBlock/position = Vector2(1400, 520)
+node_connections = [&"output", 0, &"OneShotBlock", &"OneShotAttack", 0, &"BlendSpace1D", &"OneShotAttack", 1, &"BlendSpace2D", &"OneShotBlock", 0, &"OneShotAttack", &"OneShotBlock", 1, &"AnimationBlock"]
 
 [node name="CharacterBlender" type="Node3D" unique_id=1612516003]
 
 [node name="CharacterBasev15" parent="." unique_id=1826952782 instance=ExtResource("1_j5c2r")]
 
 [node name="Skeleton3D" parent="CharacterBasev15/Armature" parent_id_path=PackedInt32Array(1826952782, 798696930) index="0" unique_id=1868138576]
-bones/0/position = Vector3(0.0028726563, -0.26382515, -1.9196884e-12)
-bones/1/rotation = Quaternion(-0.0027225658, 0.0011006714, -0.011816271, 0.9999259)
+bones/0/position = Vector3(0.0028490557, -0.26165766, -1.903916e-12)
+bones/1/rotation = Quaternion(-0.007802208, 0.003100153, -0.022248201, 0.9997173)
 bones/4/rotation = Quaternion(-1.0755295e-16, -3.1416703e-26, -1.3282274e-17, 1)
-bones/6/rotation = Quaternion(-0.003244339, 0.5964964, -0.8026036, 0.003010939)
+bones/6/rotation = Quaternion(-0.00318445, 0.59649503, -0.8026045, 0.0031068653)
 bones/7/rotation = Quaternion(-1.8626451e-08, -3.1551124e-08, 5.529702e-10, 1)
 bones/8/rotation = Quaternion(-3.7252903e-09, 4.246603e-15, -2.1763219e-16, 1)
-bones/10/rotation = Quaternion(0.008973338, 0.5893537, 0.8066231, -0.044056688)
+bones/10/rotation = Quaternion(0.046895985, 0.5756232, 0.81477004, -0.051075883)
 bones/11/rotation = Quaternion(-1.8408175e-08, -5.768379e-08, -5.264376e-10, 1)
 bones/12/rotation = Quaternion(2.0372704e-10, -1.7462265e-09, 4.65672e-10, 1)
-bones/14/position = Vector3(-0.001443834, -0.26383677, 2.6701791e-05)
+bones/14/position = Vector3(-0.0014319725, -0.2616692, 2.6493051e-05)
 bones/14/rotation = Quaternion(0.8942289, -0.0061262376, -0.006126238, -0.44752625)
 bones/15/rotation = Quaternion(-0.42842656, 0.019201549, -0.04592427, 0.9022045)
 bones/16/rotation = Quaternion(-0.020957084, -0.024679855, 0.029468875, 0.9990412)
 bones/17/rotation = Quaternion(0.48347464, 0.62255627, 0.38218448, -0.48229775)
-bones/18/position = Vector3(-0.013020906, -0.26351926, -2.6697468e-05)
+bones/18/position = Vector3(-0.012913933, -0.2613543, -2.6476266e-05)
 bones/19/rotation = Quaternion(0.42830014, 0.027826369, -0.047090795, 0.90197957)
 bones/20/rotation = Quaternion(0.02022285, 2.7502992e-08, 0.02997745, 0.9993461)
 bones/21/rotation = Quaternion(0.37743187, 0.4883709, -0.48719382, 0.6178035)
@@ -89,10 +97,13 @@ autoplay = &"Idle"
 root_node = NodePath("../CharacterBasev15")
 tree_root = SubResource("AnimationNodeBlendTree_nccel")
 anim_player = NodePath("../CharacterBasev15/AnimationPlayer")
-parameters/OneShot/active = false
-parameters/OneShot/internal_active = false
-parameters/OneShot/request = 0
+parameters/OneShotAttack/active = false
+parameters/OneShotAttack/internal_active = false
+parameters/OneShotAttack/request = 0
 parameters/BlendSpace1D/blend_position = 0.0
 parameters/BlendSpace2D/blend_position = Vector2(0, 0)
+parameters/OneShotBlock/active = false
+parameters/OneShotBlock/internal_active = false
+parameters/OneShotBlock/request = 0
 
 [editable path="CharacterBasev15"]

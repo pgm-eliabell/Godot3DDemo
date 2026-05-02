@@ -68,7 +68,7 @@ func set_animation_state(state: int, speed = 0.0, max_speed = 6.0, attack_dir = 
 		
 		# 3. play the animation 
 		print("anim_name: ", anim_name, "attack_timer: ", attack_timer )
-		animation_tree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		animation_tree["parameters/OneShotAttack/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 		#print("this is the attackdir inside of animationHandler:", attack_dir)
 		animation_tree["parameters/BlendSpace2D/blend_position"] = attack_dir
 	elif state == BLOCK:

@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dyk0lqtfoh6oh" path="res://scenes/Building/FloorWood.tscn" id="10_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://qohf0tmji416" path="res://scenes/Building/FloorStone.tscn" id="11_muem4"]
 [ext_resource type="PackedScene" uid="uid://bqoa5urq16io6" path="res://scenes/Building/Ceiling.tscn" id="12_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://bixo6orhs6sdy" path="res://scenes/npc.tscn" id="15_jkv2x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_top_color = Color(0.03137255, 0.06666667, 0.21960784, 1)
@@ -720,3 +721,6 @@ mesh = SubResource("SphereMesh_dp3eg")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=1319320457]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.038124, 3.3, -48)
 mesh = SubResource("SphereMesh_gqmmt")
+
+[node name="NPC" parent="." unique_id=942084250 instance=ExtResource("15_jkv2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115, 0, -48)
