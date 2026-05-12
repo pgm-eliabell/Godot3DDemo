@@ -13,6 +13,13 @@ extends CharacterBody3D
 @onready var arrow_up: MeshInstance3D = $CenterDirection/ArrowUp
 @onready var arrow_down: MeshInstance3D = $CenterDirection/ArrowDown
 
+#@onready var ShieldCollisionShape: CollisionShape3D = $CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/HandLeft/shieldv3/Area3D/CollisionShape3D
+#@onready var SwordCollisionShape: CollisionShape3D = $CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/HandRight/swordv2/Area3D/CollisionShape3D
+#@onready var SwordCollisionShape: Area3D = $CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/HandRight/swordv2/Area3D
+@onready var SwordCollisionShape: Area3D = $CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/HandLeft/shieldv3/Area3D
+@onready var ShieldCollisionShape: Area3D = $CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/HandLeft/shieldv3/Area3D
+
+
 var is_camera_locked : bool = true # locks the character based on the boolean, default locked
 var last_attack_dir: Vector2 = Vector2.ZERO
 var DIRECTION_THRESHOLD = 2.0
@@ -27,10 +34,10 @@ var walking_speed = 3
 var running_speed = 6
 
 func _ready():
-	#attack_area_3d.body_entered.connect(_on_attack_body_entered)
+	#SwordCollisionShape.body_entered.connect(_on_attack_body_entered)
 	label_3d.text = "HP: " + str(HP) 
-	#print("current characters affected: ", self.name )
-	#print(label_3d.text)
+	print("current characters affected: ", self.name )
+	print(label_3d.text)
 	
 	
 func _physics_process(delta):
@@ -140,22 +147,6 @@ func _on_attack_body_entered(body):
 	
 	body.take_damage(10)
 	
-	
-	
-#func get_last_cursor_direction(): 
-	## Screen center is where the screen center is, for a 1920x1080 this should always be (960, 540)
-	#var screen_center = get_viewport().get_visible_rect().size / 2
-	## position of the mouse, this should be the same as the screen center. Unless the mouse is set free.
-	#var mouse_pos = get_viewport().get_mouse_position()
-	## then this offset is always 0? other then some small diffrences, which COULD be used for direction.
-	#var offset = mouse_pos - screen_center
-	##normalize to -1/1 range 
-	##print("screen_center: ", screen_center, "mouse_pos: ", mouse_pos, "offset: ", offset, "Vector if needed: ")
-	#print("offset: ", offset)
-	##if offset 
-	#var attack_direction = Vector2(sign(offset.x), sign(offset.y))
-	#print ("is attack_direction filled?:", attack_direction)
-	#return 
 	
 	
 func set_arrow_color(mesh: MeshInstance3D, color: Color):

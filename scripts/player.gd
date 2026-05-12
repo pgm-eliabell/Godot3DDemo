@@ -1,10 +1,10 @@
 class_name player
 extends BaseCharacter
 
-# 1. De Nodes (Zorg dat deze namen exact kloppen met je Scene Tree!)
+
 @onready var camera_pitch: Node3D = $Camera_Mount/CameraPitch
-@onready var camera_free: Camera3D = $Camera_Mount/CameraPitch/Camera3D # De camera in de Pitch node
-@onready var camera_locked: Camera3D = $Camera_Mount/Camera3DLocked # Je nieuwe locked camera
+@onready var camera_free: Camera3D = $Camera_Mount/CameraPitch/Camera3D 
+@onready var camera_locked: Camera3D = $Camera_Mount/Camera3DLocked 
 
 @onready var camera_mount_free: Node3D = $Camera_Mount
 
@@ -14,18 +14,18 @@ extends BaseCharacter
 func _ready():
 	super._ready()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	# Start met de locked camera
+	# start with a locked camera
 	camera_locked.make_current()
 
 func _input(event):
-	# Camera Lock Wisselen
+	# Camera Lock change
 	if Input.is_action_just_pressed("camera_lock"):
 		print("camera has been locked/unlocked")
 		is_camera_locked = !is_camera_locked
 		
 		if is_camera_locked:
 			camera_locked.make_current()
-			# Reset alles naar voren
+			# reset all to the front
 			character_visual.rotation.y = 0
 			camera_mount_free.rotation.y = 0
 			camera_pitch.rotation.x = 0
@@ -49,7 +49,7 @@ func _input(event):
 			camera_pitch.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
 			camera_pitch.rotation.x = clamp(camera_pitch.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 		
-		# Update aanvalsrichting (pijlen)
+		# Update attack direction (pijlen)
 		update_attack_direction(event.relative)
 
 func get_input_direction() -> Vector2:

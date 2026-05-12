@@ -5,9 +5,11 @@ extends Node
 
 #@export var animation_tree: AnimationTree
 #@export var animation_player: AnimationPlayer
-@onready var animation_player: AnimationPlayer = $"../CharacterBlender/CharacterBasev17/AnimationPlayer"
+@onready var animation_player: AnimationPlayer = $"../CharacterBlender/CharacterBasev19/AnimationPlayer"
 @onready var animation_tree: AnimationTree = $"../CharacterBlender/AnimationTree"
 
+#@onready var ShieldCollisionShape: CollisionShape3D = $CharacterVisual/CharacterBlender/CharacterBasev17/Armature/Skeleton3D/HandLeft/shieldv3/Area3D/CollisionShape3D
+#@onready var SwordCollisionShape: CollisionShape3D = $CharacterVisual/CharacterBlender/CharacterBasev17/Armature/Skeleton3D/HandRight/swordv2/Area3D/CollisionShape3D
 
 enum {IDLE, WALK, RUN, ATTACK, BLOCK}
 var current_animation = IDLE
@@ -74,14 +76,15 @@ func set_animation_state(state: int, speed = 0.0, max_speed = 6.0, attack_dir = 
 		animation_tree["parameters/OneShotAttack/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 		#print("this is the attackdir inside of animationHandler:", attack_dir)
 		animation_tree["parameters/BlendSpace2D/blend_position"] = attack_dir
+		
 	elif state == BLOCK:
 		current_animation = BLOCK
 		#block_timer = _get_animation_length_or_fallback(block_animation_name, block_duration)
 		animation_tree["parameters/oneshotBlock/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	elif state == WALK or state == RUN or state == IDLE:
 		current_animation = state
-		#print("is this current animation?", current_animation)
-		#print(animation_tree)
+		#print("is this current animation?", current_animation) #should return a index
+		#print(animation_tree) #should print the current animationId of the animationTree
 		animation_tree.active = true
 		#print("speed: ",speed, "max_speed: ", max_speed)
 		var blendValue = clamp(speed / max_speed, 0.0, 1.0)

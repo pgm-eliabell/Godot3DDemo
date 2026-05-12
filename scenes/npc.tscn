@@ -2,16 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dg4q3g6doqyvv" path="res://scripts/Npc.gd" id="1_0tygy"]
 [ext_resource type="PackedScene" uid="uid://b2i1r2k3vup5t" path="res://scenes/BlenderScenes/CharacterBlend.tscn" id="3_rv78h"]
-[ext_resource type="PackedScene" uid="uid://bli4mw8wikben" path="res://assets/MyAssets/Weapons/shieldv3.glb" id="4_4wlns"]
-[ext_resource type="PackedScene" uid="uid://cxecc51imvvfa" path="res://assets/MyAssets/Weapons/swordv2.glb" id="5_tl2vt"]
 [ext_resource type="Script" uid="uid://bmyt0a3ldm0fv" path="res://scripts/AnimationHandler.gd" id="8_yf2ql"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_4wlns"]
-height = 0.2525
-radius = 1.108
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tl2vt"]
-size = Vector3(0.225, 1.67, 0.19)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7n8xq"]
 radius = 0.3
@@ -50,41 +41,21 @@ script = ExtResource("8_yf2ql")
 [node name="CharacterBlender" parent="CharacterVisual" unique_id=1612516003 instance=ExtResource("3_rv78h")]
 transform = Transform3D(-2.1068889e-08, 0, -0.482, 0, 0.482, 0, 0.482, 0, -2.1068889e-08, 0, 0, 0)
 
-[node name="Skeleton3D" parent="CharacterVisual/CharacterBlender/CharacterBasev17/Armature" parent_id_path=PackedInt32Array(1612516003, 354288197, 505081773) index="0" unique_id=1172110305]
-bones/0/position = Vector3(0.0028991797, -0.26626104, -1.9374142e-12)
-bones/1/rotation = Quaternion(-0.01199169, 0.0037845434, 0.014096584, 0.9998216)
-bones/6/rotation = Quaternion(0.020771904, 0.595315, -0.80215263, 0.04147007)
-bones/10/rotation = Quaternion(-0.045262787, 0.5938576, 0.8028421, 0.026999677)
-bones/14/position = Vector3(-0.0014571652, -0.2662728, 2.6954545e-05)
-bones/18/position = Vector3(-0.013141132, -0.2659524, -2.6964988e-05)
-
-[node name="HandLeft" type="BoneAttachment3D" parent="CharacterVisual/CharacterBlender/CharacterBasev17/Armature/Skeleton3D" index="1" unique_id=992680226]
-transform = Transform3D(-0.9915571, 0.12821783, 0.019359501, -0.12956566, -0.98566717, -0.10803867, 0.005229547, -0.10963474, 0.9939581, 0.08883861, -0.1400244, -0.5451549)
-bone_name = "Bone.Hand.L"
-bone_idx = 8
-
-[node name="shieldv3" parent="CharacterVisual/CharacterBlender/CharacterBasev17/Armature/Skeleton3D/HandLeft" unique_id=1524863201 instance=ExtResource("4_4wlns")]
-transform = Transform3D(0.17272018, -0.47454476, 0, 0.47454476, 0.17272018, 0, 0, 0, 0.505, -0.104399845, 0.037998438, 0)
-
-[node name="Area3D" type="Area3D" parent="CharacterVisual/CharacterBlender/CharacterBasev17/Armature/Skeleton3D/HandLeft/shieldv3" unique_id=1654136963]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterVisual/CharacterBlender/CharacterBasev17/Armature/Skeleton3D/HandLeft/shieldv3/Area3D" unique_id=539868179]
-transform = Transform3D(1, 0, 2.1316282e-14, 0, 1, 2.1316282e-14, 1.1617374e-12, -1.3500312e-13, 1, -4.7683716e-07, 0.1762501, 0)
-shape = SubResource("CylinderShape3D_4wlns")
-
-[node name="HandRight" type="BoneAttachment3D" parent="CharacterVisual/CharacterBlender/CharacterBasev17/Armature/Skeleton3D" index="2" unique_id=821189248]
-transform = Transform3D(-0.9943132, -0.097792484, -0.04216934, 0.09013955, -0.9836717, 0.15577175, -0.056714088, 0.15108454, 0.9868925, -0.10591169, -0.11734307, 0.5514941)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1612516003, 1138555687, 796040593) index="1" unique_id=807358396]
+transform = Transform3D(-0.8318217, 0.534156, 0.15083092, -0.55114496, -0.82704616, -0.110605195, 0.065663666, -0.17513348, 0.9823525, 0.3143038, -0.018998742, 0.5736086)
 bone_name = "Bone.Hand.R"
 bone_idx = 12
 
-[node name="swordv2" parent="CharacterVisual/CharacterBlender/CharacterBasev17/Armature/Skeleton3D/HandRight" unique_id=1805679623 instance=ExtResource("5_tl2vt")]
-transform = Transform3D(0.17364822, -0.9848077, 0, 0.9848077, 0.17364822, 0, 0, 0, 1, -0.29256418, 0.18359242, 0)
+[node name="swordv2" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/BoneAttachment3D" index="0" unique_id=1805679623]
+transform = Transform3D(-4.1691923e-08, -0.7954, 0, 0.9538, -3.476804e-08, 0, 0, 0, 1, -0.3, 0.22891198, 0)
 
-[node name="Area3D" type="Area3D" parent="CharacterVisual/CharacterBlender/CharacterBasev17/Armature/Skeleton3D/HandRight/swordv2" unique_id=1564247482]
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1612516003, 1138555687, 796040593) index="2" unique_id=1293876229]
+transform = Transform3D(-0.9561934, 0.23151833, 0.17914572, 0.14118075, -0.17137846, 0.97503704, 0.25644064, 0.95761603, 0.13118502, 0.41916654, 0.30455124, -0.12021673)
+bone_name = "Bone.Hand.L"
+bone_idx = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterVisual/CharacterBlender/CharacterBasev17/Armature/Skeleton3D/HandRight/swordv2/Area3D" unique_id=1444894042]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93999994, 0.01)
-shape = SubResource("BoxShape3D_tl2vt")
+[node name="shieldv3" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/BoneAttachment3D2" index="0" unique_id=1524863201]
+transform = Transform3D(0.15903938, -0.43695706, 0, 0.43695706, 0.15903938, 0, 0, 0, 0.465, -0.087391414, 0.031807877, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1030361106]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
@@ -141,4 +112,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.099999994, 0)
 mesh = SubResource("CylinderMesh_sptji")
 
 [editable path="CharacterVisual/CharacterBlender"]
-[editable path="CharacterVisual/CharacterBlender/CharacterBasev17"]
+[editable path="CharacterVisual/CharacterBlender/CharacterBasev19"]

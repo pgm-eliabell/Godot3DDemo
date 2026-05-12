@@ -667,7 +667,7 @@ material_override = SubResource("StandardMaterial3D_sugp2")
 size = Vector3(2, 2, 1)
 
 [node name="Player" parent="." unique_id=1488730104 instance=ExtResource("2_0wfyh")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 113.9, -2.2351742e-08, -54.7)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 113.9, -2.2351742e-08, -56.7)
 
 [node name="TestAttributes" type="Node3D" parent="." unique_id=2041316953]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0.39999998, 36)
@@ -723,4 +723,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.038124, 3.3, -48)
 mesh = SubResource("SphereMesh_gqmmt")
 
 [node name="NPC" parent="." unique_id=942084250 instance=ExtResource("15_jkv2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.121025, 0.049999714, -52.145195)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.121025, 0.049999714, -51.145195)
