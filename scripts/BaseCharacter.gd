@@ -13,12 +13,11 @@ extends CharacterBody3D
 @onready var arrow_up: MeshInstance3D = $CenterDirection/ArrowUp
 @onready var arrow_down: MeshInstance3D = $CenterDirection/ArrowDown
 
-#@onready var ShieldCollisionShape: CollisionShape3D = $CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/HandLeft/shieldv3/Area3D/CollisionShape3D
-#@onready var SwordCollisionShape: CollisionShape3D = $CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/HandRight/swordv2/Area3D/CollisionShape3D
-#@onready var SwordCollisionShape: Area3D = $CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/HandRight/swordv2/Area3D
-@onready var SwordCollisionShape: Area3D = $CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/HandLeft/shieldv3/Area3D
-@onready var ShieldCollisionShape: Area3D = $CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/HandLeft/shieldv3/Area3D
+#@onready var SwordCollisionShape: Area3D = $CharacterBasev19/Armature/Skeleton3D/BoneAttachment3D/swordv2/Area3D
+#@onready var ShieldCollisionShape: Area3D = $CharacterBasev19/Armature/Skeleton3D/BoneAttachment3D2/shieldv3/Area3D
 
+@onready var SwordCollisionShape: Area3D = $CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/BoneAttachment3D/swordv2/Area3D
+@onready var ShieldCollisionShape: Area3D = $CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/BoneAttachment3D2/shieldv3/Area3D
 
 var is_camera_locked : bool = true # locks the character based on the boolean, default locked
 var last_attack_dir: Vector2 = Vector2.ZERO
@@ -34,7 +33,7 @@ var walking_speed = 3
 var running_speed = 6
 
 func _ready():
-	#SwordCollisionShape.body_entered.connect(_on_attack_body_entered)
+	SwordCollisionShape.body_entered.connect(on_attack_body_entered)
 	label_3d.text = "HP: " + str(HP) 
 	print("current characters affected: ", self.name )
 	print(label_3d.text)
@@ -58,14 +57,16 @@ func _physics_process(delta):
 	if wants_to_attack() and not animation_handler.is_in_state(animation_handler.ATTACK):
 		print("wants to attack")
 		animation_handler.call("set_animation_state", animation_handler.ATTACK, 0, 6.0, last_attack_dir)
-		#print("current state attack: ", animation_handler.current_animation, "get_last_cursor_direction: ", get_last_cursor_direction())
+		print("current state attack: ", animation_handler.current_animation, ". get_last_cursor_direction: ", get_last_cursor_direction())
 		print("value sent -> animationhandler: ", get_last_cursor_direction())
+		
 	elif wants_to_block() and not animation_handler.is_in_state(animation_handler.BLOCK):
 		animation_handler.call("set_animation_state", animation_handler.BLOCK, 0, 6.0, Vector2.ZERO)
 
 	# Ask the handler what state we're in, don't store it ourselves
 	var is_attacking = animation_handler.is_in_state(animation_handler.ATTACK)
 	var is_blocking = animation_handler.is_in_state(animation_handler.BLOCK)
+
 	# var _is_walking = animation_handler.is_in_state(animation_handler.WALK)
 	# var _is_running = animation_handler.is_in_state(animation_handler.RUN)
 	# var _is_idle = animation_handler.is_in_state(animation_handler.IDLE)
@@ -136,16 +137,16 @@ func take_damage(amount: int)-> void:
 	HP -= amount
 	label_3d.text = "HP: " + str(HP) #this does not define the variable type, its just to change the int to a string for display purposes
 	
-func _on_attack_body_entered(body):
-	if body == self:
+func on_attack_body_entered(body):
+	print("on_attack_body_entered")
+	if body == self: #usually happens when area3D overlaps with the body of the user. 
 		print(body.name ,"hit self, you can ignore this")
 		return
-	if not body is BaseCharacter:
+	if body is BaseCharacter:
 		print(self.name, " hit -> ", body.name, " you can ignore this")
+		print(self.name ," hit ", body.name)
+		body.take_damage(10)
 		return
-	print(self.name ," hit ", body.name)
-	
-	body.take_damage(10)
 	
 	
 	
