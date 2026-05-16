@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqoa5urq16io6"]
+[gd_scene format=3 uid="uid://bqoa5urq16io6"]
 
 [ext_resource type="PackedScene" uid="uid://bb0p57lws60fa" path="res://assets/brackeys_3d_game_assets/dungeon_assets/building/ceiling.glb" id="1_y2rww"]
 

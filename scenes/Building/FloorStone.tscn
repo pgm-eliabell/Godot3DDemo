@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://qohf0tmji416"]
+[gd_scene format=3 uid="uid://qohf0tmji416"]
 
 [ext_resource type="PackedScene" uid="uid://jsosfdrcskjv" path="res://assets/brackeys_3d_game_assets/dungeon_assets/building/floor_stone.glb" id="1_3unlu"]
 

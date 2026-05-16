@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bujwaujlafqe6"]
+[gd_scene format=3 uid="uid://bujwaujlafqe6"]
 
 [ext_resource type="PackedScene" uid="uid://b1a0dpw1of7ym" path="res://assets/brackeys_3d_game_assets/dungeon_assets/building/wall_arched.glb" id="1_5o4nc"]
 

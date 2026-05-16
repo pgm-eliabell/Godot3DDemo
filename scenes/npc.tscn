@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bixo6orhs6sdy"]
 
-[ext_resource type="Script" uid="uid://dg4q3g6doqyvv" path="res://scripts/Npc.gd" id="1_0tygy"]
+[ext_resource type="Script" uid="uid://dg4q3g6doqyvv" path="res://scripts/npc.gd" id="1_0tygy"]
 [ext_resource type="PackedScene" uid="uid://b2i1r2k3vup5t" path="res://scenes/BlenderScenes/CharacterBlend.tscn" id="3_rv78h"]
 [ext_resource type="Script" uid="uid://bmyt0a3ldm0fv" path="res://scripts/AnimationHandler.gd" id="8_yf2ql"]
 
@@ -41,38 +41,37 @@ script = ExtResource("8_yf2ql")
 [node name="CharacterBlender" parent="CharacterVisual" unique_id=1612516003 instance=ExtResource("3_rv78h")]
 transform = Transform3D(-2.1068889e-08, 0, -0.482, 0, 0.482, 0, 0.482, 0, -2.1068889e-08, 0, 0, 0)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1612516003, 1138555687, 796040593) index="1" unique_id=807358396]
-transform = Transform3D(-0.8318217, 0.534156, 0.15083092, -0.55114496, -0.82704616, -0.110605195, 0.065663666, -0.17513348, 0.9823525, 0.3143038, -0.018998742, 0.5736086)
+[node name="Skeleton3D" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature" parent_id_path=PackedInt32Array(1612516003, 1620574256) index="0" unique_id=566473396]
+bones/0/position = Vector3(0.002889385, -0.2653615, -1.9308663e-12)
+bones/1/rotation = Quaternion(-5.8216763e-05, 2.3817258e-05, -0.0055872714, 0.9999844)
+bones/6/rotation = Quaternion(-0.0033109526, 0.59649795, -0.8026025, 0.002904241)
+bones/7/rotation = Quaternion(-1.8626451e-08, -3.1551124e-08, 5.529702e-10, 1)
+bones/8/rotation = Quaternion(-3.7252903e-09, 4.246603e-15, -2.1763219e-16, 1)
+bones/10/rotation = Quaternion(-0.01059559, 0.59606963, 0.80186164, -0.040083576)
+bones/11/rotation = Quaternion(-1.8408175e-08, -5.768379e-08, -5.264376e-10, 1)
+bones/12/rotation = Quaternion(2.0372704e-10, -1.7462265e-09, 4.65672e-10, 1)
+bones/14/position = Vector3(-0.0014522416, -0.2653732, 2.6882046e-05)
+bones/18/position = Vector3(-0.013096733, -0.26505384, -2.6869053e-05)
+
+[node name="BoneAttachment3D3" type="BoneAttachment3D" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D" index="1" unique_id=807358396]
+transform = Transform3D(-0.9976332, 0.010947398, -0.06788161, -0.02010167, -0.99054855, 0.13567966, -0.06575471, 0.13672319, 0.9884244, 0.012817577, -0.13244683, 0.5540395)
 bone_name = "Bone.Hand.R"
 bone_idx = 12
 
-[node name="swordv2" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/BoneAttachment3D" index="0" unique_id=1805679623]
-transform = Transform3D(-4.1691923e-08, -0.7954, 0, 0.9538, -3.476804e-08, 0, 0, 0, 1, -0.3, 0.22891198, 0)
-
-[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1612516003, 1138555687, 796040593) index="2" unique_id=1293876229]
-transform = Transform3D(-0.9561934, 0.23151833, 0.17914572, 0.14118075, -0.17137846, 0.97503704, 0.25644064, 0.95761603, 0.13118502, 0.41916654, 0.30455124, -0.12021673)
+[node name="BoneAttachment3D4" type="BoneAttachment3D" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D" index="2" unique_id=1293876229]
+transform = Transform3D(-1, -0.00027157593, 9.444478e-06, 0.00026784462, -0.99093086, -0.13436976, 4.584748e-05, -0.1343697, 0.99093115, 0.0028103543, -0.13288754, -0.55209875)
 bone_name = "Bone.Hand.L"
 bone_idx = 8
 
-[node name="shieldv3" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D/BoneAttachment3D2" index="0" unique_id=1524863201]
-transform = Transform3D(0.15903938, -0.43695706, 0, 0.43695706, 0.15903938, 0, 0, 0, 0.465, -0.087391414, 0.031807877, 0)
+[node name="BoneAttachment3D" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D" index="3" unique_id=681443659]
+transform = Transform3D(-0.9976332, 0.010947398, -0.06788161, -0.02010167, -0.99054855, 0.13567966, -0.06575471, 0.13672319, 0.9884244, 0.012817577, -0.13244683, 0.5540395)
+
+[node name="BoneAttachment3D2" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D" index="4" unique_id=744220248]
+transform = Transform3D(-1, -0.00027157593, 9.444478e-06, 0.00026784462, -0.99093086, -0.13436976, 4.584748e-05, -0.1343697, 0.99093115, 0.0028103543, -0.13288754, -0.55209875)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1030361106]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
 shape = SubResource("CapsuleShape3D_7n8xq")
-
-[node name="Camera_Mount" type="Node3D" parent="." unique_id=1923022895]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
-
-[node name="CameraPitch" type="Node3D" parent="Camera_Mount" unique_id=1206869767]
-transform = Transform3D(1, 0, 0, 0, 0.9848078, 0.1736482, 0, -0.1736482, 0.9848078, 0.70000005, 1.2, 1.4)
-
-[node name="Camera3D" type="Camera3D" parent="Camera_Mount/CameraPitch" unique_id=260137838]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
-fov = 103.7643
-
-[node name="Camera3DLocked" type="Camera3D" parent="Camera_Mount" unique_id=1831957676]
-transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0.5, 0.9173649, 1.6984807)
 
 [node name="Debug_Arrow" type="MeshInstance3D" parent="." unique_id=607119431]
 transform = Transform3D(1, -8.742278e-08, -8.742278e-08, 8.742278e-08, -4.371139e-08, 1, -8.742278e-08, -1, -4.371138e-08, -6.9938224e-08, 1, -0.8)
@@ -112,4 +111,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.099999994, 0)
 mesh = SubResource("CylinderMesh_sptji")
 
 [editable path="CharacterVisual/CharacterBlender"]
-[editable path="CharacterVisual/CharacterBlender/CharacterBasev19"]
