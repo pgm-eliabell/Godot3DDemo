@@ -27,6 +27,11 @@ var block_timer = 0.0
 #@export var attack_animation_name: StringName = &"Attack"
 #@export var block_animation_name: StringName = &"BlockStance"
 
+signal attack_ended
+
+
+
+
 func _get_animation_length_or_fallback(animation_name: StringName, fallback: float) -> float:
 	var anim := animation_player.get_animation(animation_name)
 	if anim:
@@ -43,6 +48,7 @@ func _physics_process(delta):
 		if attack_timer <= 0:
 			current_animation = IDLE
 			animation_tree["parameters/BlendSpace2D/blend_position"] = 0.0
+			attack_ended.emit()
 	if block_timer > 0 and current_animation == BLOCK:
 		block_timer -= delta
 		if block_timer <= 0:

@@ -22,10 +22,12 @@ extends CharacterBody3D
 var is_camera_locked : bool = true # locks the character based on the boolean, default locked
 var last_attack_dir: Vector2 = Vector2.ZERO
 var DIRECTION_THRESHOLD = 2.0
+var target = null #has to be defined later i think
 
 
 var SPEED = 3
 const JUMP_VELOCITY = 4.5
+
 
 var HP = 100
 var running = false
@@ -33,7 +35,10 @@ var walking_speed = 3
 var running_speed = 6
 
 func _ready():
-	SwordCollisionShape.body_entered.connect(on_attack_body_entered)
+	SwordCollisionShape.monitoring = false 
+	animation_handler.attack_ended.connect(func(): SwordCollisionShape.monitoring = false)
+	
+	#SwordCollisionShape.body_entered.connect(on_attack_body_entered)
 	label_3d.text = "HP: " + str(HP) 
 	print("current characters affected: ", self.name )
 	print(label_3d.text)
@@ -59,7 +64,8 @@ func _physics_process(delta):
 		animation_handler.call("set_animation_state", animation_handler.ATTACK, 0, 6.0, last_attack_dir)
 		print("current state attack: ", animation_handler.current_animation, ". get_last_cursor_direction: ", get_last_cursor_direction())
 		print("value sent -> animationhandler: ", get_last_cursor_direction())
-		
+		on_attack_body_entered(BaseCharacter) 
+
 	elif wants_to_block() and not animation_handler.is_in_state(animation_handler.BLOCK):
 		animation_handler.call("set_animation_state", animation_handler.BLOCK, 0, 6.0, Vector2.ZERO)
 
@@ -139,6 +145,7 @@ func take_damage(amount: int)-> void:
 	
 func on_attack_body_entered(body):
 	print("on_attack_body_entered")
+	print(body.name)
 	if body == self: #usually happens when area3D overlaps with the body of the user. 
 		print(body.name ,"hit self, you can ignore this")
 		return
