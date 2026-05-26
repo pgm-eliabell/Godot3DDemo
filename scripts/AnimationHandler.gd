@@ -47,13 +47,13 @@ func _physics_process(delta):
 		attack_timer -= delta
 		if attack_timer <= 0:
 			current_animation = IDLE
-			animation_tree["parameters/BlendSpace2D/blend_position"] = 0.0
+			animation_tree["parameters/BlendSpace2D/blend_position"] = Vector2.ZERO
 			attack_ended.emit()
 	if block_timer > 0 and current_animation == BLOCK:
 		block_timer -= delta
 		if block_timer <= 0:
 			current_animation = IDLE
-			animation_tree["parameters/BlendSpace2D/blend_position"] = 0.0
+			animation_tree["parameters/BlendSpace2D/blend_position"] = Vector2.ZERO
 
 	#handle_animation(delta)
 	#update_tree()

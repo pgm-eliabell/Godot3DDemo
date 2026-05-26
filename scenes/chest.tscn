@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://byir3quk8wn"]
 
-[ext_resource type="PackedScene" uid="uid://oj78es4pe0m3" path="res://assets/brackeys_3d_game_assets/import_examples/chest_gold/chest_gold.glb" id="1_oii8l"]
+[ext_resource type="PackedScene" uid="uid://oj78es4pe0m3" path="res://assets/example Assets/import_examples/chest_gold/chest_gold.glb" id="1_oii8l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oii8l"]
 size = Vector3(1.6, 1.3000001, 1.4)

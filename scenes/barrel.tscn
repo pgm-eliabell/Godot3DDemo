@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cf5ll7yyiwv36"]
 
-[ext_resource type="PackedScene" uid="uid://b5cagujkgyl47" path="res://assets/brackeys_3d_game_assets/import_examples/barrel/barrel.glb" id="1_q36op"]
+[ext_resource type="PackedScene" uid="uid://b5cagujkgyl47" path="res://assets/example Assets/import_examples/barrel/barrel.glb" id="1_q36op"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q36op"]
 

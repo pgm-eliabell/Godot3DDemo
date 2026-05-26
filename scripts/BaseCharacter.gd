@@ -38,7 +38,7 @@ func _ready():
 	SwordCollisionShape.monitoring = false 
 	animation_handler.attack_ended.connect(func(): SwordCollisionShape.monitoring = false)
 	
-	#SwordCollisionShape.body_entered.connect(on_attack_body_entered)
+	SwordCollisionShape.body_entered.connect(on_attack_body_entered)
 	label_3d.text = "HP: " + str(HP) 
 	print("current characters affected: ", self.name )
 	print(label_3d.text)
@@ -61,10 +61,14 @@ func _physics_process(delta):
 	# If attack is triggered and not currently active, call the animationHandler Node. 
 	if wants_to_attack() and not animation_handler.is_in_state(animation_handler.ATTACK):
 		print("wants to attack")
+		
+		#Turn on hit detection for the sword
+		SwordCollisionShape.monitoring = true 
+		
 		animation_handler.call("set_animation_state", animation_handler.ATTACK, 0, 6.0, last_attack_dir)
 		print("current state attack: ", animation_handler.current_animation, ". get_last_cursor_direction: ", get_last_cursor_direction())
 		print("value sent -> animationhandler: ", get_last_cursor_direction())
-		on_attack_body_entered(BaseCharacter) 
+		#on_attack_body_entered(BaseCharacter) 
 
 	elif wants_to_block() and not animation_handler.is_in_state(animation_handler.BLOCK):
 		animation_handler.call("set_animation_state", animation_handler.BLOCK, 0, 6.0, Vector2.ZERO)
@@ -144,8 +148,9 @@ func take_damage(amount: int)-> void:
 	label_3d.text = "HP: " + str(HP) #this does not define the variable type, its just to change the int to a string for display purposes
 	
 func on_attack_body_entered(body):
-	print("on_attack_body_entered")
-	print(body.name)
+	if not is_instance_valid(body):
+		print("body was not valid")
+		return
 	if body == self: #usually happens when area3D overlaps with the body of the user. 
 		print(body.name ,"hit self, you can ignore this")
 		return

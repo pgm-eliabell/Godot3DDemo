@@ -45,22 +45,18 @@ transform = Transform3D(-2.1068889e-08, 0, -0.482, 0, 0.482, 0, 0.482, 0, -2.106
 "parameters/BlendSpace2D 2/blend_position" = Vector2(0, 0)
 
 [node name="Skeleton3D" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature" parent_id_path=PackedInt32Array(1612516003, 1620574256) index="0" unique_id=566473396]
-bones/0/position = Vector3(0.0028383522, -0.26067466, -1.8967642e-12)
-bones/1/rotation = Quaternion(-0.014947926, 0.00574486, -0.03239512, 0.9993469)
-bones/6/rotation = Quaternion(-0.0031093813, 0.5964931, -0.8026057, 0.0032271068)
-bones/7/rotation = Quaternion(-1.8626451e-08, -3.1551124e-08, 5.529702e-10, 1)
-bones/8/rotation = Quaternion(-3.7252903e-09, 4.246603e-15, -2.1763219e-16, 1)
-bones/10/rotation = Quaternion(0.10359785, 0.5533928, 0.8243067, -0.059517108)
-bones/11/rotation = Quaternion(-1.8408175e-08, -5.768379e-08, -5.264376e-10, 1)
-bones/12/rotation = Quaternion(2.0372704e-10, -1.7462265e-09, 4.65672e-10, 1)
-bones/14/position = Vector3(-0.0014265939, -0.26068613, 2.6407086e-05)
-bones/18/position = Vector3(-0.012865425, -0.26037243, -2.6375848e-05)
+bones/0/position = Vector3(0.0028871393, -0.2651553, -1.9293733e-12)
+bones/1/rotation = Quaternion(-0.00025736215, 0.00010516953, -0.006076128, 0.9999815)
+bones/6/rotation = Quaternion(-0.0032954484, 0.5964976, -0.8026029, 0.0029290747)
+bones/10/rotation = Quaternion(-0.008922289, 0.5955049, 0.8022839, -0.040435825)
+bones/14/position = Vector3(-0.0014511129, -0.26516697, 2.6860078e-05)
+bones/18/position = Vector3(-0.013086553, -0.26484784, -2.6833553e-05)
 
 [node name="BoneAttachment3D" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D" index="1" unique_id=681443659]
-transform = Transform3D(-0.98625225, 0.120872505, 0.112678505, -0.113419466, -0.9910511, 0.07038326, 0.12017757, 0.05663576, 0.9911355, 0.14967759, -0.11686537, 0.46343148)
+transform = Transform3D(-0.9977829, 0.012612159, -0.06535034, -0.021341128, -0.99066335, 0.1346496, -0.06304198, 0.13574553, 0.98873585, 0.014986696, -0.13217449, 0.5529158)
 
 [node name="BoneAttachment3D2" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D" index="2" unique_id=744220248]
-transform = Transform3D(-0.99852496, -0.054079108, 0.004858752, 0.053273004, -0.9930599, -0.10484962, 0.010495211, -0.104436085, 0.9944761, -0.016237762, -0.14429602, -0.5445244)
+transform = Transform3D(-0.99999934, -0.0012036497, 4.2082578e-05, 0.0011871604, -0.9909839, -0.13397297, 0.00020295886, -0.13397282, 0.9909848, 0.002533367, -0.13290563, -0.5520011)
 
 [node name="PlayerHitbox" type="CollisionShape3D" parent="." unique_id=1374271806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dyk0lqtfoh6oh"]
 
-[ext_resource type="PackedScene" uid="uid://w3gbbh4h2ehg" path="res://assets/brackeys_3d_game_assets/dungeon_assets/building/floor_wood.glb" id="1_1x1mj"]
+[ext_resource type="PackedScene" uid="uid://w3gbbh4h2ehg" path="res://assets/example Assets/dungeon_assets/building/floor_wood.glb" id="1_1x1mj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1x1mj"]
 size = Vector3(4, 0.14999999, 4)

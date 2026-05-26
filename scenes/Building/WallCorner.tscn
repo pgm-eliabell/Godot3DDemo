@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://vke7tqcn38fd"]
+[gd_scene format=3 uid="uid://vke7tqcn38fd"]
 
-[ext_resource type="PackedScene" uid="uid://tob18eop6fgu" path="res://assets/brackeys_3d_game_assets/dungeon_assets/building/wall_corner.glb" id="1_p2vm8"]
+[ext_resource type="PackedScene" uid="uid://tob18eop6fgu" path="res://assets/example Assets/dungeon_assets/building/wall_corner.glb" id="1_p2vm8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p2vm8"]
 size = Vector3(2.5, 4, 1)
