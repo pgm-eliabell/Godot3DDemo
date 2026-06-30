@@ -60,31 +60,34 @@ func _physics_process(delta):
 
 	# If attack is triggered and not currently active, call the animationHandler Node. 
 	if wants_to_attack() and not animation_handler.is_in_state(animation_handler.ATTACK):
-		print("wants to attack")
+		#print("wants to attack")
 		
 		#Turn on hit detection for the sword
 		SwordCollisionShape.monitoring = true 
 		
 		animation_handler.call("set_animation_state", animation_handler.ATTACK, 0, 6.0, last_attack_dir)
-		print("current state attack: ", animation_handler.current_animation, ". get_last_cursor_direction: ", get_last_cursor_direction())
-		print("value sent -> animationhandler: ", get_last_cursor_direction())
+		#print("current state attack: ", animation_handler.current_animation, ". get_last_cursor_direction: ", get_last_cursor_direction())
+		#print("value sent -> animationhandler: ", get_last_cursor_direction())
 		#on_attack_body_entered(BaseCharacter) 
 
-	elif wants_to_block() and not animation_handler.is_in_state(animation_handler.BLOCK):
-		animation_handler.call("set_animation_state", animation_handler.BLOCK, 0, 6.0, Vector2.ZERO)
-
-	# Ask the handler what state we're in, don't store it ourselves
+	# Ask the handler what state we're in, don't store it ourselves, this should print false or true based on the current state 
 	var is_attacking = animation_handler.is_in_state(animation_handler.ATTACK)
+	#print("is_attacking: ", is_attacking)
 	var is_blocking = animation_handler.is_in_state(animation_handler.BLOCK)
-
-	# var _is_walking = animation_handler.is_in_state(animation_handler.WALK)
-	# var _is_running = animation_handler.is_in_state(animation_handler.RUN)
-	# var _is_idle = animation_handler.is_in_state(animation_handler.IDLE)
+	#print("is_blocking: ", is_blocking)
 
 	var input_dir := get_input_direction()
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var has_input := input_dir != Vector2.ZERO #just simply checks if there is any input, if the input vector is not zero, then there is input.
 	
+
+	if wants_to_block() and not animation_handler.is_in_state(animation_handler.BLOCK):
+		#get the current state 
+		animation_handler.call("set_animation_state", animation_handler.BLOCK, 0, 6.0, last_attack_dir)
+		# var current_state = animation_handler.current_animation
+		#print("current state block: ", animation_handler.current_animation)
+		on_attack_body_entered(BaseCharacter)
+
 	if not is_attacking and not is_blocking:
 		if has_input:
 			if is_camera_locked:
@@ -134,10 +137,12 @@ func get_last_cursor_direction() -> Vector2:
 func get_input_direction() -> Vector2:
 	return Vector2.ZERO
 		
-func wants_to_attack() -> bool:
+func wants_to_attack() -> bool: #here to be overwritten 
+	print("wants to attack f")
 	return false
 		
-func wants_to_block() -> bool:
+func wants_to_block() -> bool: #here to be overwritten 
+	print("wants to block f")
 	return false
 	
 func wants_to_jump() -> bool:
@@ -152,14 +157,24 @@ func on_attack_body_entered(body):
 		print("body was not valid")
 		return
 	if body == self: #usually happens when area3D overlaps with the body of the user. 
-		print(body.name ,"hit self, you can ignore this")
+		#print(body.name ,"hit self, you can ignore this")
 		return
 	if body is BaseCharacter:
 		print(self.name, " hit -> ", body.name, " you can ignore this")
 		print(self.name ," hit ", body.name)
+		var is_blocking = body.animation_handler.is_in_state(body.animation_handler.BLOCK)
+		if is_blocking: 
+			print("is_blocking: ", is_blocking)
+			print(self.name, "blocked ", "attack from ", body.name)
+			#var attack_dir = get_last_cursor_direction()
+			#var block_dir = body.get_last_cursor_direction()
+			body.take_damage(0) #no damage is taken if the block is successful, but you can add a stamina system later to make it more realistic.
 		body.take_damage(10)
 		return
 	
+func is_block_successful(attack_dir: Vector2, block_dir: Vector2) -> bool:
+	var required_block_dir = Vector2(-attack_dir.x, attack_dir.y)
+	return block_dir == required_block_dir
 	
 	
 func set_arrow_color(mesh: MeshInstance3D, color: Color):

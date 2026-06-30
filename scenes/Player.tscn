@@ -45,18 +45,18 @@ transform = Transform3D(-2.1068889e-08, 0, -0.482, 0, 0.482, 0, 0.482, 0, -2.106
 "parameters/BlendSpace2D 2/blend_position" = Vector2(0, 0)
 
 [node name="Skeleton3D" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature" parent_id_path=PackedInt32Array(1612516003, 1620574256) index="0" unique_id=566473396]
-bones/0/position = Vector3(0.0028871393, -0.2651553, -1.9293733e-12)
-bones/1/rotation = Quaternion(-0.00025736215, 0.00010516953, -0.006076128, 0.9999815)
-bones/6/rotation = Quaternion(-0.0032954484, 0.5964976, -0.8026029, 0.0029290747)
-bones/10/rotation = Quaternion(-0.008922289, 0.5955049, 0.8022839, -0.040435825)
-bones/14/position = Vector3(-0.0014511129, -0.26516697, 2.6860078e-05)
-bones/18/position = Vector3(-0.013086553, -0.26484784, -2.6833553e-05)
+bones/0/position = Vector3(0.0028433937, -0.26113766, -1.9001328e-12)
+bones/1/rotation = Quaternion(-0.011661111, 0.004563476, -0.028673606, 0.99951047)
+bones/6/rotation = Quaternion(-0.003144739, 0.596494, -0.80260515, 0.0031704726)
+bones/10/rotation = Quaternion(0.076894306, 0.5641121, 0.82020926, -0.05587314)
+bones/14/position = Vector3(-0.0014291272, -0.26114917, 2.6447575e-05)
+bones/18/position = Vector3(-0.012888272, -0.2608349, -2.6423146e-05)
 
 [node name="BoneAttachment3D" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D" index="1" unique_id=681443659]
-transform = Transform3D(-0.9977829, 0.012612159, -0.06535034, -0.021341128, -0.99066335, 0.1346496, -0.06304198, 0.13574553, 0.98873585, 0.014986696, -0.13217449, 0.5529158)
+transform = Transform3D(-0.99319214, 0.09341493, 0.06959146, -0.08738427, -0.99252653, 0.08517501, 0.077028036, 0.078514, 0.9939326, 0.119476594, -0.12106374, 0.48721513)
 
 [node name="BoneAttachment3D2" parent="CharacterVisual/CharacterBlender/CharacterBasev19/Armature/Skeleton3D" index="2" unique_id=744220248]
-transform = Transform3D(-0.99999934, -0.0012036497, 4.2082578e-05, 0.0011871604, -0.9909839, -0.13397297, 0.00020295886, -0.13397282, 0.9909848, 0.002533367, -0.13290563, -0.5520011)
+transform = Transform3D(-0.99891007, -0.04656064, 0.0032733674, 0.045907266, -0.99272, -0.11134978, 0.008434057, -0.11107822, 0.9937757, -0.013127083, -0.14127141, -0.5462496)
 
 [node name="PlayerHitbox" type="CollisionShape3D" parent="." unique_id=1374271806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)

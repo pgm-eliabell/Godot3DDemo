@@ -7,7 +7,8 @@ func get_input_direction() -> Vector2:
 	return dir
 	
 func wants_to_attack() -> bool:
-	return Input.is_action_just_pressed("ui_accept")
+	return true #always attack for testing purposes, you can change this to false if you want to test blocking and attacking with the player.
+	# return Input.is_action_just_pressed("ui_accept")
 
 func wants_to_block() -> bool:
 	return Input.is_action_just_pressed("block") 

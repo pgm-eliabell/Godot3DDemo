@@ -59,6 +59,7 @@ func wants_to_attack() -> bool:
 	return Input.is_action_just_pressed("attack")
 
 func wants_to_block() -> bool:
+	#print("wants to attack has been triggered in Player.gd")
 	return Input.is_action_just_pressed("block") 
 
 func wants_to_jump() -> bool:
